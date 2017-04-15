@@ -12,7 +12,7 @@
             <th>Tên tiêu chí</th>
             <th>Hoàn toàn không đống ý</th>
             <th>Cơ bản không đồng ý</th>
-            <th>Đống ý một phần</th>
+            <th>Dong y mot phan</th>
             <th>Cơ bản đồng ý</th>
             <th>Hoàn toàn đồng ý</th>
         </tr>
