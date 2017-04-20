@@ -1,59 +1,127 @@
-<!DOCTYPE html>
-<html>
-  <head>
-      <meta charset="utf-8"></meta>
-  </head>
-  <body>
-      <form action="{{ route('lopmonhoc.add') }}" method="post">
-        {{csrf_field()}}
-            <select name="hocky_id">
-              @foreach($hockys as $hocky)
-                <option value="{{$hocky->id}}">{{$hocky->tenhocky}}</option>
-              @endforeach
-            </select>
-          </br>
-          Nhập mã lớp:
-          <input type="text" name="mamonhoc" id="mamonhoc">  </br>
-          Nhập mã giảng viên:
-          <input type="text" name="magiangvien" id="magiangvien">  </br>
-          Nhập môn:
-          <input type="text" name="tenmonhoc" id="tenmonhoc">  </br>
-          <button type="submit">Submit</button>
-      </form>
-      <form action="{{route('lopmonhoc.addExcel')}}" method="POST" enctype="multipart/form-data">
-        {{csrf_field()}}
-        <select name="hocky_id">
-          @foreach($hockys as $value)
-            <option value="{{$value->id}}">{{$value->tenhocky}}</option>
-          @endforeach
-          <label>Import file</label>
-          <input type="file" name="file"/>
-          <button type="submit">Import</button>
-        </select>
-      </form>
-      <table>
-          <tr>
-              <th>Tên học kì</th>
-              <th>Mã lớp môn học</th>
-              <th>Mã giảng viên</th>
-              <th>Tên môn học</th>
-              <th>Sửa</th>
-              <th>Xoá</th>
-          </tr>
-          @foreach($hockys as $hocky)
-            @foreach($lopmonhocs as $lopmonhoc)
-            @if($lopmonhoc->hocky_id==$hocky->id)
-              <tr>
-                  <td>{{$hocky->tenhocky}}</td>
-                  <td>{{$lopmonhoc->mamonhoc}}</td>
-                  <td>{{$lopmonhoc->magiangvien}}</td>
-                  <td><a href="{{route('lopmonhoc.listSV',['id'=>$lopmonhoc->id])}}">{{$lopmonhoc->tenmonhoc}}</a></td>
-                  <td><a href="{{route('lopmonhoc.getEdit',['id'=>$lopmonhoc->id])}}">Sửa</a></td>
-                  <td><a href="{{route('lopmonhoc.delete',['id'=>$lopmonhoc->id])}}">Xoá</a></td>
-              </tr>
-            @endif
-            @endforeach
-          @endforeach
-      </table>
-  </body>
-</html>
+
+
+@extends('admin.layout')
+@section('content')
+<div class="right_col" role="main">
+        <div class="">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="panel-body">
+                  <div class="page-title">
+                    <div class="title_left">
+                      <h3>Tạo lớp môn học</h3>
+                    </div>
+                  </div>
+
+                  <form action="{{ route('lopmonhoc.add') }}" method="post" class="form-horizontal form-label-left" novalidate>
+                    {{csrf_field()}}
+                    <div class="item form-group">
+                    Chọn học kỳ
+                    <select name="hocky_id">
+                      @foreach($hockys as $hocky)
+                        <option value="{{$hocky->id}}">{{$hocky->tenhocky}}</option>
+                      @endforeach
+                    </select>
+                    </div>
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mamonhoc">Nhập mã lớp <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="mamonhoc" class="form-control col-md-7 col-xs-12"  name="mamonhoc"  required="required" type="text">
+                      </div>
+                    </div>
+
+                    <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="magiangvien">Mã giảng viên <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" id="magiangvien" name="magiangvien" required="required"  class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+
+                        <div class="item form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tenmonhoc">Tên môn học <span class="required">*</span>
+                          </label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="tenmonhoc" name="tenmonhoc" required="required"  class="form-control col-md-7 col-xs-12">
+                          </div>
+                        </div>
+
+                    <div class="form-group">
+                      <div class="col-md-6 col-md-offset-3">
+                        <button id="send" type="submit" class="btn btn-success">Tạo</button>
+                      </div>
+                    </div>
+                  </form>
+                    <form action="{{route('lopmonhoc.addExcel')}}" method="POST" enctype="multipart/form-data" class="form-horizontal form-label-left" novalidate>
+                      {{csrf_field()}}
+                      <div class="item form-group">
+                          <label>Tạo bảng file excel</label></br>
+                      Chọn học kỳ
+                      <select name="hocky_id">
+                        @foreach($hockys as $value)
+                          <option value="{{$value->id}}">{{$value->tenhocky}}</option>
+                        @endforeach
+                        </select>
+                        <input type="file" name="file"/>
+                        <button type="submit" class="btn btn-success">Tạo</button>
+                      </div>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="panel-body">
+                  <div class="page-title">
+                    <div class="title_left">
+                      <h3>Danh sách lớp môn học</h3>
+                    
+                    </div>
+                  </div>
+                    <div class="editable-responsive">
+                        <table class="table table-striped" id="datatable-editable">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Tên học kì</th>
+                                    <th>Mã lớp môn học</th>
+                                    <th>Mã giảng viên</th>
+                                    <th>Tên môn học</th>
+                                    <th>Sửa/Xoá<th/>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              @foreach($hockys as $hocky)
+                                @foreach($lopmonhocs as $lopmonhoc)
+                                @if($lopmonhoc->hocky_id==$hocky->id)
+                                  <tr>
+                                      <td>{{$loop->index+1}}</td>
+                                      <td>{{$hocky->tenhocky}}</td>
+                                      <td>{{$lopmonhoc->mamonhoc}}</td>
+                                      <td>{{$lopmonhoc->magiangvien}}</td>
+                                      <td><a href="{{route('lopmonhoc.listSV',['id'=>$lopmonhoc->id])}}">{{$lopmonhoc->tenmonhoc}}</a></td>
+                                    <td >
+                                      <a href="{{route('lopmonhoc.getEdit',['id'=>$lopmonhoc->id])}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Sửa  </a>
+                                      <a href="{{route('lopmonhoc.delete',['id'=>$lopmonhoc->id])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xoá </a>
+                                    </td>
+                                </tr>
+                                @endif
+                                @endforeach
+                              @endforeach
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+@endsection

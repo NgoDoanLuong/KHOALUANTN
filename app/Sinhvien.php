@@ -13,4 +13,8 @@ class Sinhvien extends Model
     public function monhocs(){
       return $this->hasMany('App\Monhoc');
     }
+
+    public function user(){
+      return $this->belongsTo('App\User');
+    }
 }

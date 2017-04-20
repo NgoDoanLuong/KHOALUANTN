@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Hocky;
 use App\Lopmonhoc;
 use App\Tieuchi;
+use App\Diem;
 class HockyController extends Controller
 {
     //

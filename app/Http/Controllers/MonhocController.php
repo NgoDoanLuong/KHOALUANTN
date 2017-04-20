@@ -20,6 +20,10 @@ class MonhocController extends Controller
       $lopmonhoc=Lopmonhoc::where('hocky_id',$id)->get();
       return view('admin.monhoc.showAdd',compact('hocky','lopmonhoc'));
     }
+    public function show(){
+      $hocky=Hocky::all();
+      return view('admin.monhoc.show',compact('hocky'));
+    }
 
     public function createSV_lop(Request $request){
       $data=Excel::load(Input::file('file'),function($reader){

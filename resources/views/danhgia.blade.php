@@ -5,7 +5,7 @@
   </head>
   <body>
       Tên môn học: {{$lopmonhoc->tenmonhoc}}
-      <form action="{{route('danhgia')}}" method="post">
+      <form action="{{route('diem.update')}}" method="post">
         {{csrf_field()}}
       <table>
         <tr>

@@ -8,6 +8,7 @@ use App\Lopmonhoc;
 use App\Monhoc;
 use App\Giangvien;
 use Excel;
+use App\Diem;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 class LopmonhocController extends Controller
@@ -116,6 +117,8 @@ class LopmonhocController extends Controller
     //Danh sach sinh vien cua lop mon hoc
     public function listSV($id){
       $dssv=Lopmonhoc::find($id)->monhocs;
-      return view('admin.lopmonhoc.dssv',compact('dssv'));
+      $lopmonhoc=Lopmonhoc::find($id);
+
+      return view('admin.lopmonhoc.dssv',compact('dssv','lopmonhoc'));
     }
 }

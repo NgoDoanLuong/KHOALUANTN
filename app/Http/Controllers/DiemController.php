@@ -9,6 +9,7 @@ use App\Monhoc;
 use App\Giangvien;
 use App\Sinhvien;
 use Excel;
+use App\User;
 use App\Tieuchi;
 use App\Diem;
 use Illuminate\Support\Facades\Input;
@@ -51,36 +52,64 @@ class DiemController extends Controller
 
         array_push($array_result,$array);
       }
-      return view('test',compact('tieuchi','array_result'));
-    }
-
-
-    public function form($id){
-      $lopmonhoc=Lopmonhoc::find($id);
-      $hocky_id=Lopmonhoc::find($id)->hocky_id;
-      $tieuchi=Tieuchi::where('hocky_id',$hocky_id)->get();
-      return view('danhgia',compact('tieuchi','lopmonhoc'));
-    }
-
-    public function danhgia(Request $request){
-      $sinhvien=Sinhvien::find(22);
-      $lopmonhoc=Lopmonhoc::find(2);
-      $monhoc=Monhoc::where('sinhvien_id',$sinhvien->id)->where('lopmonhoc_id',$lopmonhoc->id)->first();
-
-
-    $tieuchi=Hocky::find($lopmonhoc->hocky_id)->tieuchis;
-      foreach($tieuchi as $tc){
-        $id_tieuchi=$tc->id;
-        $diem_dg=$request->$id_tieuchi;
-        $diem = new Diem;
-        $diem->diemdanhgia=$diem_dg;
-        $diem->tieuchi_id=$tc->id;
-        $diem->monhoc_id=$monhoc->id;
-        $diem->save();
+      $sv_da_danh_gia=0;
+      foreach($sv_lop_hoc as $sv_danh_gia){
+        $check_sv_da_danh_gia=$sv_danh_gia->diems->count();
+        if($check_sv_da_danh_gia!=0){
+          $sv_da_danh_gia++;
+        }
       }
+      $si_so=$sv_lop_hoc->count();
+      $lopmonhoc=Lopmonhoc::find($id_lopmonhoc);
+      return view('result',compact('tieuchi','array_result','lopmonhoc','si_so','sv_da_danh_gia'));
+    }
 
+
+    public function form_update($monhoc_id){
+      $monhoc=Monhoc::find($monhoc_id);
+      $lopmonhoc=Lopmonhoc::where('id',$monhoc->lopmonhoc_id)->first();
+      $hocky=Hocky::where('id',$lopmonhoc->hocky_id)->first();
+      $tieuchi=Tieuchi::where('hocky_id',$hocky->id)->get();
+      return view('sinhvien.update',compact('tieuchi','monhoc'));
+    }
+
+    public function danhgia($monhoc_id,Request $request){
+      /*
+  $user=User::find(23);
+      $sinhvien=Sinhvien::where('user_id',$user->id)->first();
+      $lopmonhoc=Lopmonhoc::find(2);  */
+
+      $monhoc=Monhoc::find($monhoc_id);
+      //$monhoc=Monhoc::where('sinhvien_id',$sinhvien->id)->where('lopmonhoc_id',$lopmonhoc->id)->first();
+      $lopmonhoc=Lopmonhoc::where('id',$monhoc->lopmonhoc_id)->first();
+      $diems=Diem::where('monhoc_id',$monhoc->id)->count();
+      if($diems==0){
+      $tieuchi=Hocky::find($lopmonhoc->hocky_id)->tieuchis;
+        foreach($tieuchi as $tc){
+          $id_tieuchi=$tc->id;
+          $diem_dg=$request->$id_tieuchi;
+          $diem = new Diem;
+          $diem->diemdanhgia=$diem_dg;
+          $diem->tieuchi_id=$tc->id;
+          $diem->monhoc_id=$monhoc->id;
+          $diem->save();
+        }
+      }else return "da danh gia";
 
       return redirect()->back();
+    }
 
+    public function update_diem($monhoc_id,Request $request){
+        $monhoc=Monhoc::find($monhoc_id);
+        $lopmonhoc=Lopmonhoc::where('id',$monhoc->lopmonhoc_id)->first();
+        $tieuchi=Hocky::find($lopmonhoc->hocky_id)->tieuchis;
+        foreach($tieuchi as $tc){
+          $diem=Diem::where('monhoc_id',$monhoc_id)->where('tieuchi_id',$tc->id)->first();
+          $id_tieuchi=$tc->id;
+          $diem_dg=$request->$id_tieuchi;
+          $diem->diemdanhgia=$diem_dg;
+          $diem->save();
+        }
+        return redirect()->back();
     }
 }

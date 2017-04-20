@@ -5,8 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Sinhvien;
 use Hash;
+use App\Hocky;
 use Excel;
+use App\Monhoc;
 use App\User;
+use App\Lopmonhoc;
+use App\Tieuchi;
+use App\Diem;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 class SinhvienController extends Controller
@@ -88,6 +94,56 @@ class SinhvienController extends Controller
       }
           return redirect()->back();
       }
+
+      public function home_sv(){
+        $time_now=Carbon::now('Asia/Ho_Chi_Minh');
+        $hockys=Hocky::all();
+        $check_time=array();
+        foreach($hockys as $hocky){
+          $start=Carbon::parse($hocky->start);
+          $end=Carbon::parse($hocky->end);
+          if($time_now<$start){
+            array_push($check_time,-1);
+          }
+          if($time_now>$end){
+            array_push($check_time,1);
+          }
+          if($time_now>=$start && $time_now<=$end){
+            array_push($check_time,0);
+          }
+
+        }
+        return view('sinhvien.home',compact('hockys','check_time'));
+      }
+
+      public function monhoc_sinhvien($user_id,$hocky_id){
+        $sinhvien=Sinhvien::where('user_id',$user_id)->first();
+        $lopmonhoc=Hocky::find($hocky_id)->lopmonhocs;
+        $monhocs=array();
+        foreach($lopmonhoc as $monhoc_sv){
+          $check=Monhoc::where('sinhvien_id',$sinhvien->id)->where('lopmonhoc_id',$monhoc_sv->id)->count();
+          if($check!=0){
+            $monhoc=Monhoc::where('sinhvien_id',$sinhvien->id)->where('lopmonhoc_id',$monhoc_sv->id)->first();
+            array_push($monhocs,$monhoc);
+          }
+        }
+        $check_danhgia=array();
+        foreach($monhocs as $monhoc){
+          $check=$monhoc->diems->count();
+          array_push($check_danhgia,$check);
+        }
+        return view('sinhvien.monhoc',compact('monhocs','check_danhgia'));
+      }
+
+      public function form_danhgia($monhoc_id){
+        $id=$monhoc_id;
+        $monhoc=Monhoc::find($id);
+        $lopmonhoc=Lopmonhoc::where('id',$monhoc->lopmonhoc_id)->first();
+        $hocky_id=$lopmonhoc->hocky_id;
+        $tieuchi=Tieuchi::where('hocky_id',$hocky_id)->get();
+        return view('sinhvien.danhgia',compact('tieuchi','lopmonhoc','id'));
+      }
+
 
 
 }

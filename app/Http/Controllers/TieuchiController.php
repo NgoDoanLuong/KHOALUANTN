@@ -7,7 +7,7 @@ use Excel;
 use Illuminate\Support\Facades\Input;
 use App\Tieuchi;
 use App\Hocky;
-
+use App\Diem;
 class TieuchiController extends Controller
 {
     public function show(){

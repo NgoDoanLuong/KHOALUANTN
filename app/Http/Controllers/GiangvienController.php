@@ -8,6 +8,10 @@ use App\Giangvien;
 use Hash;
 use Excel;
 use App\User;
+use App\Diem;
+use App\Hocky;
+use App\Lopmonhoc;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 class GiangvienController extends Controller
@@ -91,6 +95,33 @@ class GiangvienController extends Controller
             }
           }
         return redirect()->back();
+        }
+
+        public function home_gv(){
+          $time_now=Carbon::now('Asia/Ho_Chi_Minh');
+          $hockys=Hocky::all();
+          $check_time=array();
+          foreach($hockys as $hocky){
+            $start=Carbon::parse($hocky->start);
+            $end=Carbon::parse($hocky->end);
+            if($time_now<$start){
+              array_push($check_time,-1);
+            }
+            if($time_now>$end){
+              array_push($check_time,1);
+            }
+            if($time_now>=$start && $time_now<=$end){
+              array_push($check_time,0);
+            }
+          }
+          $hockys=Hocky::all();
+          return view('giangvien.home',compact('hockys','check_time'));
+        }
+
+        public function list_monhoc($user_id,$hocky_id){
+            $giangvien=Giangvien::where('user_id',$user_id)->first();
+            $lopmonhocs=Lopmonhoc::where('giangvien_id',$giangvien->id)->where('hocky_id',$hocky_id)->get();
+            return view('giangvien.lopmonhoc',compact('lopmonhocs'));
         }
 
 }

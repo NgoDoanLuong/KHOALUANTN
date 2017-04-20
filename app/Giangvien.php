@@ -13,4 +13,7 @@ class Giangvien extends Model
     public function lopmonhocs(){
       return $this->hasMany('App\Lopmonhoc');
     }
+    public function user(){
+      return $this->belongsTo('App\User');
+    }
 }

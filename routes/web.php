@@ -17,15 +17,21 @@ Route::get('/', function () {
 });
 */
 
-
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 Route::group(['middleware'=>'admin'],function(){
 Route::group(['prefix'=>'admin'],function(){
+    Route::get('/',function(){
+      return view('admin.layout');
+    });
   //Quan ly hoc ky
     Route::group(['prefix'=>'hocky'],function(){
       Route::get('/',['as'=>'hocky.list','uses'=>'HocKyController@show']);
       Route::post('list/add',['as'=>'hocky.create','uses'=>'HocKyController@add']);
       Route::get('{id}/delete',['as'=>'hocky.delete','uses'=>'HocKyController@delete']);
+
+      Route::post('{hocky_id}/time',['as'=>'hocky.time','uses'=>'TimeController@createTime']);
     });
 //Quan ly tieu chi
     Route::group(['prefix'=>'tieuchi'],function (){
@@ -43,6 +49,8 @@ Route::group(['prefix'=>'admin'],function(){
     Route::post('/addExcel',['as'=>'sinhvien.addExcel','uses'=>'SinhvienController@addExcel']);
 
     Route::get('{id}/delete',['as'=>'sinhvien.delete','uses'=>'SinhvienController@delete']);
+
+    Route::get('search',['as'=>'sinhvien.search','uses'=>'SinhvienController@search']);
   });
 //Quan ly giang vien
   Route::group(['prefix'=>'giangvien'],function(){
@@ -70,6 +78,7 @@ Route::group(['prefix'=>'admin'],function(){
 
   //Quan ly danh sach sinh vien cua lop mon hoc
   Route::group(['prefix'=>'monhoc'],function(){
+    Route::get('/',['as'=>'monhoc.show','uses'=>'MonhocController@show']);
     Route::get('add',['as'=>'monhoc.showAdd','uses'=>'MonhocController@showAdd']);
     Route::post('add',['as'=>'monhoc.add','uses'=>'MonhocController@add']);
     Route::get('listSV',['as'=>'monhoc.listSV','uses'=>'MonhocController@listSV']);
@@ -87,9 +96,50 @@ Route::get('getLogin',['as'=>'getLogin','uses'=>'LoginController@getLogin']);
 Route::post('postLogin',['as'=>'postLogin','uses'=>'LoginController@postLogin']);
 
 Route::get('outout',['as'=>'getLogout','uses'=>'LoginController@logout']);
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+//Route::get('{id}/test',['as'=>'show_diem','uses'=>'DiemController@showDiem']);
 
-Route::get('{id}/test','DiemController@showDiem');
+//Route::get('{id}/monhoc','DiemController@form');
 
-Route::get('{id}/monhoc','DiemController@form');
+//Route::post('danhgia',['as'=>'danhgia','uses'=>'DiemController@danhgia']);
 
-Route::post('danhgia',['as'=>'danhgia','uses'=>'DiemController@danhgia']);
+/*
+oute::get('test',function(){
+  return view('admin.layout');
+});*/
+
+
+//Sinh vien
+Route::group(['middleware'=>'sinhvien'],function(){
+Route::group(['prefix'=>'sinhvien'],function(){
+    Route::get('/',['as'=>'sinhvien.home','uses'=>'SinhvienController@home_sv']);
+    //Danh sach mon hoc cua sinh vien
+    Route::get('{sinhvien_id}/{hocky_id}/monhoc',['as'=>'sinhvien.list_monhoc','uses'=>'SinhvienController@monhoc_sinhvien']);
+
+    Route::get('{monhoc_id}/monhoc',['as'=>'sinhvien.danhgia','uses'=>'SinhvienController@form_danhgia']);
+    Route::post('{monhoc_id}/danhgia',['as'=>'danhgia','uses'=>'DiemController@danhgia']);
+
+    Route::get('{monhoc_id}/update',['as'=>'diem.showUpdate','uses'=>'DiemController@form_update']);
+    Route::post('{monhoc_id}/update',['as'=>'diem.update','uses'=>'DiemController@update_diem']);
+});
+});
+
+//Giang vien
+Route::group(['middleware'=>'giangvien'],function(){
+Route::group(['prefix'=>'giangvien'],function(){
+    Route::get('/',['as'=>'giangvien.home','uses'=>'GiangvienController@home_gv']);
+    //Danh sach lop mon hoc cua giang vien
+    Route::get('{user_id}/{hocky_id}/lopmonhoc',['as'=>'giangvien.lopmonhoc','uses'=>'GiangvienController@list_monhoc']);
+    Route::get('{id_lopmonhoc}/lopmonhoc',['as'=>'show_diem','uses'=>'DiemController@showDiem']);
+});
+});
+  Route::get('datetime',function(){
+    return view('testtime');
+  });
+  Route::post('datetime','Time@post_time');
+
+Route::get('checktime',function(){
+  return Carbon::now('Asia/Ho_Chi_Minh');
+});
