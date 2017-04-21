@@ -26,3 +26,14 @@ class Giangvien
          return $next($request);
        }
 }
+/*
+@if($check_time[$loop->index]==-1)
+{{$hocky->tenhocky}}
+<button type="button" class="btn btn-warning">Chưa đến thời gian đánh giá</button>
+@elseif($check_time[$loop->index]==1)
+  <a href="{{route('giangvien.lopmonhoc',['user_id'=>Auth::user()->id,'hocky_id'=>$hocky->id])}}">{{$hocky->tenhocky}}</a>
+<button type="button" class="btn btn-info">  Hết thời gian đánh giá</button>
+@else
+<a href="{{route('sinhvien.list_monhoc',['user_id'=>Auth::user()->id,'hocky_id'=>$hocky->id])}}">{{$hocky->tenhocky}}</a>
+<button type="button" class="btn btn-success">Trong thời gian đánh giá</button>
+@endif*/

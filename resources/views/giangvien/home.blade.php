@@ -12,6 +12,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="x_panel">
                 <div class="panel-body">
+
                   @if($check_time[$loop->index]==-1)
                   {{$hocky->tenhocky}}
                   <button type="button" class="btn btn-warning">Chưa đến thời gian đánh giá</button>
@@ -19,9 +20,12 @@
                     <a href="{{route('giangvien.lopmonhoc',['user_id'=>Auth::user()->id,'hocky_id'=>$hocky->id])}}">{{$hocky->tenhocky}}</a>
                   <button type="button" class="btn btn-info">  Hết thời gian đánh giá</button>
                   @else
-                  <a href="{{route('sinhvien.list_monhoc',['user_id'=>Auth::user()->id,'hocky_id'=>$hocky->id])}}">{{$hocky->tenhocky}}</a>
+                  <a href="{{route('giangvien.lopmonhoc',['user_id'=>Auth::user()->id,'hocky_id'=>$hocky->id])}}">{{$hocky->tenhocky}}</a>
                   <button type="button" class="btn btn-success">Trong thời gian đánh giá</button>
                   @endif
+
+
+
                 </div>
               </div>
             </div>

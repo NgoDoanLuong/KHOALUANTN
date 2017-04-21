@@ -114,7 +114,7 @@ class GiangvienController extends Controller
               array_push($check_time,0);
             }
           }
-          $hockys=Hocky::all();
+      
           return view('giangvien.home',compact('hockys','check_time'));
         }
 

@@ -42,7 +42,7 @@
               <div>
                 <button type="submit">Đăng nhập</button>
 
-                <a class="reset_pass" href="{{route('password.request')}}">Quên mật khẩu</a>
+                <a class="reset_pass" href="#">Quên mật khẩu</a>
               </div>
 
               <div class="clearfix"></div>
@@ -51,7 +51,7 @@
           </section>
         </div>
 
-        <
+
       </div>
     </div>
   </body>

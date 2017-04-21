@@ -96,9 +96,9 @@ Route::get('getLogin',['as'=>'getLogin','uses'=>'LoginController@getLogin']);
 Route::post('postLogin',['as'=>'postLogin','uses'=>'LoginController@postLogin']);
 
 Route::get('outout',['as'=>'getLogout','uses'=>'LoginController@logout']);
-Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+//Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+//Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+//Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 //Route::get('{id}/test',['as'=>'show_diem','uses'=>'DiemController@showDiem']);
 
 //Route::get('{id}/monhoc','DiemController@form');
@@ -134,12 +134,4 @@ Route::group(['prefix'=>'giangvien'],function(){
     Route::get('{user_id}/{hocky_id}/lopmonhoc',['as'=>'giangvien.lopmonhoc','uses'=>'GiangvienController@list_monhoc']);
     Route::get('{id_lopmonhoc}/lopmonhoc',['as'=>'show_diem','uses'=>'DiemController@showDiem']);
 });
-});
-  Route::get('datetime',function(){
-    return view('testtime');
-  });
-  Route::post('datetime','Time@post_time');
-
-Route::get('checktime',function(){
-  return Carbon::now('Asia/Ho_Chi_Minh');
 });
