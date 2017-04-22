@@ -96,7 +96,7 @@ class DiemController extends Controller
         }
       }else return "da danh gia";
 
-      return redirect()->back();
+      return redirect()->route('sinhvien.home');
     }
 
     public function update_diem($monhoc_id,Request $request){

@@ -92,7 +92,7 @@ Route::group(['prefix'=>'admin'],function(){
   });
 });
 });
-Route::get('getLogin',['as'=>'getLogin','uses'=>'LoginController@getLogin']);
+Route::get('/',['as'=>'getLogin','uses'=>'LoginController@getLogin']);
 Route::post('postLogin',['as'=>'postLogin','uses'=>'LoginController@postLogin']);
 
 Route::get('outout',['as'=>'getLogout','uses'=>'LoginController@logout']);

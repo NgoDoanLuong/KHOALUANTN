@@ -19,8 +19,8 @@
                     {{$hocky->tenhocky}}
                     <button type="button" class="btn btn-danger">  Hết thời gian đánh giá</button>
                   @else
-                    <a href="{{route('sinhvien.list_monhoc',['user_id'=>Auth::user()->id,'hocky_id'=>$hocky->id])}}">{{$hocky->tenhocky}}</a>
-                    <button type="button" class="btn btn-success">Trong thời gian đánh giá</button>
+                    {{$hocky->tenhocky}}
+                    <button type="button" class="btn btn-success"><a href="{{route('sinhvien.list_monhoc',['user_id'=>Auth::user()->id,'hocky_id'=>$hocky->id])}}">Trong thời gian đánh giá</a></button>
                   @endif
                 </div>
               </div>

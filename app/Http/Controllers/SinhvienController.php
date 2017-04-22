@@ -97,7 +97,7 @@ class SinhvienController extends Controller
 
       public function home_sv(){
         $time_now=Carbon::now('Asia/Ho_Chi_Minh');
-        $hockys=Hocky::all();
+        $hockys=Hocky::orderBy('created_at','DESC')->get();
         $check_time=array();
         foreach($hockys as $hocky){
           $start=Carbon::parse($hocky->start);

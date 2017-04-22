@@ -17,11 +17,11 @@
                   {{$hocky->tenhocky}}
                   <button type="button" class="btn btn-warning">Chưa đến thời gian đánh giá</button>
                   @elseif($check_time[$loop->index]==1)
-                    <a href="{{route('giangvien.lopmonhoc',['user_id'=>Auth::user()->id,'hocky_id'=>$hocky->id])}}">{{$hocky->tenhocky}}</a>
-                  <button type="button" class="btn btn-info">  Hết thời gian đánh giá</button>
+                  {{$hocky->tenhocky}}
+                  <button type="button" class="btn btn-info"><a href="{{route('giangvien.lopmonhoc',['user_id'=>Auth::user()->id,'hocky_id'=>$hocky->id])}}">  Hết thời gian đánh giá</a></button>
                   @else
-                  <a href="{{route('giangvien.lopmonhoc',['user_id'=>Auth::user()->id,'hocky_id'=>$hocky->id])}}">{{$hocky->tenhocky}}</a>
-                  <button type="button" class="btn btn-success">Trong thời gian đánh giá</button>
+                  {{$hocky->tenhocky}}
+                  <button type="button" class="btn btn-success"><a href="{{route('giangvien.lopmonhoc',['user_id'=>Auth::user()->id,'hocky_id'=>$hocky->id])}}">Trong thời gian đánh giá</a></button>
                   @endif
 
 

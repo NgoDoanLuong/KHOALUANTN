@@ -11,7 +11,7 @@ class HockyController extends Controller
 {
     //
     public function show(){
-    $hocky=Hocky::all();
+    $hocky=Hocky::orderBy('created_at','DESC')->get();;
     return view('admin.hocky.add',compact('hocky'));
   }
   public function add(Request $request){

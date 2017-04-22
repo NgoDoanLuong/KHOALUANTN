@@ -46,7 +46,7 @@
               <div class="x_panel">
                 <div class="panel-body">
 
-                  <form action="{{ route('monhoc.createSV') }}" method="post" class="form-horizontal form-label-left" novalidate>
+                  <form action="{{ route('monhoc.createSV') }}" method="post" class="form-horizontal form-label-left" enctype="multipart/form-data" novalidate>
                       {{csrf_field()}}
                       Chọn lớp môn học của học kì
                       <select name="lopmonhoc_id">

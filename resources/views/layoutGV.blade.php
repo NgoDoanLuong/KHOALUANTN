@@ -43,7 +43,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="{{asset('images/dhcn.jpg')}}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Chào mừng,</span>
@@ -84,7 +84,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">{{Auth::user()->name}}
+                    <img src="{{asset('images/dhcn.jpg')}}" alt="">{{Auth::user()->name}}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -108,7 +108,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Trường đại học công nghệ - Đại học Quốc gia Hà Nội
+            Trường Đại học Công Nghệ - Đại học Quốc gia Hà Nội
           </div>
           <div class="clearfix"></div>
         </footer>

@@ -21,7 +21,7 @@ class MonhocController extends Controller
       return view('admin.monhoc.showAdd',compact('hocky','lopmonhoc'));
     }
     public function show(){
-      $hocky=Hocky::all();
+      $hocky=Hocky::orderBy('created_at','DESC')->get();;
       return view('admin.monhoc.show',compact('hocky'));
     }
 

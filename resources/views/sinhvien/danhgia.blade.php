@@ -4,7 +4,7 @@
         <div class="">
           <div class="page-title">
             <div class="title_left">
-              <h3>Tên môn học: {{$lopmonhoc->tenmonhoc}} </h3>
+              <h3>Đánh giá  môn học: {{$lopmonhoc->tenmonhoc}} </h3>
             </div>
           </div>
           <div class="row">
@@ -27,7 +27,7 @@
                         @foreach($tieuchi as $tieu)
                         <tr>
                           <td>{{$loop->index+1}}</td>
-                          <td>{{$tieu->tentieuchi}}</td>
+                          <td>{{$tieu->tentieuchi}}</td>                      
                           <td><input type="radio" name="{{$tieu->id}}" value="1"></input></td>
                           <td><input type="radio" name="{{$tieu->id}}" value="2"></input></td>
                           <td><input type="radio" name="{{$tieu->id}}" value="3"></input></td>
@@ -37,7 +37,7 @@
                         @endforeach
                       </tbody>
                     </table>
-                    <button type="submit" class="btn btn-success">Đánh giá</button>
+                    <button type="submit" class="btn btn-success">Ghi nhận</button>
               </form>
             </div>
           </div>

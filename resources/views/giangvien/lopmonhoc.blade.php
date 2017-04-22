@@ -12,7 +12,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="x_panel">
                 <div class="panel-body">
-                  <a href="{{route('show_diem',['id_lopmonhoc'=>$lophoc->id])}}">{{$lophoc->tenmonhoc}} </a>
+                  <a href="{{route('show_diem',['id_lopmonhoc'=>$lophoc->id])}}">{{$lophoc->mamonhoc}}--{{$lophoc->tenmonhoc}} </a>
                 </div>
               </div>
             </div>

@@ -31,7 +31,7 @@ class LoginController extends Controller
    public function logout(Request $request){
      Auth::logout();
 
-     return "logut thanh cong ";
+     return redirect()->route('getLogin');
    }
 
    public function showLinkForm(){
