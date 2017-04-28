@@ -11,14 +11,14 @@ class HockyController extends Controller
 {
     //
     public function show(){
-    $hocky=Hocky::orderBy('created_at','DESC')->get();;
+    $hocky=Hocky::orderBy('created_at','DESC')->get();
     return view('admin.hocky.add',compact('hocky'));
   }
   public function add(Request $request){
       $hocky=new Hocky;
       $hocky->tenhocky=$request->tenhocky;
       $hocky->save();
-      return redirect()->back();
+      return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Tạo thành công']);
   }
   public function delete($id){
     $LOPMONHOC=Hocky::find($id)->lopmonhocs;//Tim het cac lop mon hoc
@@ -40,7 +40,15 @@ class HockyController extends Controller
     }
     //Xoá học kì
     Hocky::find($id)->delete();
-    return redirect()->back();
+    return redirect()->back()->with(['message_delete'=>'Xoá thành công']);
+  }
+
+  public function createTime($hocky_id,Request $request){
+      $hocky=Hocky::find($hocky_id);
+      $hocky->batdau=$request->batdau;
+      $hocky->ketthuc=$request->ketthuc;
+      $hocky->save();
+      return redirect()->back();
   }
 
 }

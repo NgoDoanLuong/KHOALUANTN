@@ -16,11 +16,16 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
+
                     <h2>Tạo tài khoản cho giảng viên </h2>
 
                   </div>
                   <div class="x_content">
-
+                    @if(Session::has('flash_message'))
+                    <div class=" alert alert-{!! Session::get('flash_level') !!}">
+                        {!! Session::get('flash_message') !!}
+                    </div>
+                    @endif
                     <form action="{{route('giangvien.add')}}" method="post" class="form-horizontal form-label-left" novalidate>
                           {{csrf_field()}}
                       <div class="item form-group">
@@ -59,6 +64,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="x_panel">
+
                     <form action="{{route('giangvien.addExcel')}}" method="POST" enctype="multipart/form-data">
                       {{csrf_field()}}
                         <label>Tạo bảng file excel</label>
@@ -76,7 +82,12 @@
                   <div class="panel-body">
 
                       <div class="editable-responsive">
-                          <table class="table table-striped" id="datatablegv">
+                        @if(Session::has('message_delete'))
+                        <div class=" alert alert-success">
+                            {!! Session::get('message_delete') !!}
+                        </div>
+                        @endif
+                          <table class="table table-striped" id="tablegv">
                               <thead>
                                   <tr>
                                       <th>STT</th>
@@ -94,8 +105,9 @@
                                       <td>{{$giangvien->user->email}}</td>
                                       <td>{{$giangvien->tengiangvien}}</td>
                                       <td >
-                                        <a href="{{route('giangvien.delete',['id'=>$giangvien->id])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xoá </a>
+                                        <a onclick="return xoa('Bạn có chắc xoá hay không')" href="{{route('giangvien.delete',['id'=>$giangvien->id])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xoá </a>
                                       </td>
+                                      <td></td>
                                   </tr>
                                 @endforeach
                               </tbody>
@@ -109,9 +121,5 @@
         </div>
           </div>
         </div>
-        <script type="text/javascript">
-         $(document).ready(function() {
-           $('#datatablegv').DataTable();
-        } );
-        </script>
+
 @endsection

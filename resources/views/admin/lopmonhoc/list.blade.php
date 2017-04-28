@@ -9,6 +9,11 @@
               <div class="x_panel">
                 <div class="panel-body">
                   <div class="page-title">
+                    @if(Session::has('flash_message'))
+                    <div class=" alert alert-{!! Session::get('flash_level') !!}">
+                        {!! Session::get('flash_message') !!}
+                    </div>
+                    @endif
                     <div class="title_left">
                       <h3>Tạo lớp môn học</h3>
                     </div>
@@ -81,11 +86,16 @@
                   <div class="page-title">
                     <div class="title_left">
                       <h3>Danh sách lớp môn học</h3>
-                    
+
                     </div>
                   </div>
+                  @if(Session::has('message_delete'))
+                  <div class=" alert alert-success">
+                      {!! Session::get('message_delete') !!}
+                  </div>
+                  @endif
                     <div class="editable-responsive">
-                        <table class="table table-striped" id="datatable-editable">
+                        <table class="table table-striped" id="table_lopmonhoc">
                             <thead>
                                 <tr>
                                     <th>STT</th>
@@ -101,6 +111,7 @@
                                 @foreach($lopmonhocs as $lopmonhoc)
                                 @if($lopmonhoc->hocky_id==$hocky->id)
                                   <tr>
+                                    
                                       <td>{{$loop->index+1}}</td>
                                       <td>{{$hocky->tenhocky}}</td>
                                       <td>{{$lopmonhoc->mamonhoc}}</td>
@@ -108,8 +119,9 @@
                                       <td><a href="{{route('lopmonhoc.listSV',['id'=>$lopmonhoc->id])}}">{{$lopmonhoc->tenmonhoc}}</a></td>
                                     <td >
                                       <a href="{{route('lopmonhoc.getEdit',['id'=>$lopmonhoc->id])}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Sửa  </a>
-                                      <a href="{{route('lopmonhoc.delete',['id'=>$lopmonhoc->id])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xoá </a>
+                                      <a onclick="return xoa('Bạn có chắc xoá hay không')" href="{{route('lopmonhoc.delete',['id'=>$lopmonhoc->id])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xoá </a>
                                     </td>
+                                    <td></td>
                                 </tr>
                                 @endif
                                 @endforeach

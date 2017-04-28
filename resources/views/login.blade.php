@@ -47,12 +47,12 @@
                 <input type="text" class="form-control" placeholder="Email" name="email" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" name="password" required="" />
+                <input type="password" class="form-control" placeholder="Mật khẩu" name="password" required="" />
               </div>
               <div>
                 <button type="submit">Đăng nhập</button>
 
-                <a class="reset_pass" href="#">Quên mật khẩu</a>
+                <a class="reset_pass" href="{{route('password.request')}}">Quên mật khẩu</a>
               </div>
 
               <div class="clearfix"></div>

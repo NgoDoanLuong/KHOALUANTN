@@ -16,8 +16,8 @@ class CreateHockysTable extends Migration
       Schema::create('hockys', function (Blueprint $table) {
           $table->increments('id');
           $table->string('tenhocky');
-          $table->dateTime('start')->nullable();
-          $table->dateTime('end')->nullable();
+          $table->dateTime('batdau')->nullable();
+          $table->dateTime('ketthuc')->nullable();
           $table->timestamps();
       });
     }

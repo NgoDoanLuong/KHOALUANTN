@@ -15,7 +15,11 @@
 
                   </div>
                   <div class="x_content">
-
+                    @if(Session::has('flash_message'))
+                    <div class=" alert alert-{!! Session::get('flash_level') !!}">
+                        {!! Session::get('flash_message') !!}
+                    </div>
+                    @endif
                     <form action="{{route('sinhvien.add')}}" method="post" class="form-horizontal form-label-left" novalidate>
                       {{csrf_field()}}
                       <div class="item form-group">
@@ -61,6 +65,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="x_panel">
+
                     <form action="{{route('sinhvien.addExcel')}}" method="POST" enctype="multipart/form-data">
                       {{csrf_field()}}
                         <label>Tạo bảng file excel</label>
@@ -76,32 +81,38 @@
                 <div class="x_panel">
                   <div class="panel-body">
                     <h3>Danh sách sinh viên</h3>
-                      <div class="editable-responsive">
-                          <table class="table table-striped" id="datatable">
+                      <div class="x_content">
+                        @if(Session::has('message_delete'))
+                        <div class=" alert alert-success">
+                            {!! Session::get('message_delete') !!}
+                        </div>
+                        @endif
+                          <table id="tablesv" class="table table-striped" >
                               <thead>
                                   <tr>
                                       <th>STT</th>
                                       <th>Lớp </th>
                                       <th>Mã số sinh viên</th>
                                       <th>Tên sinh viên</th>
-                                      <th>Email</th>      
+                                      <th>Email</th>
                                       <th>Xoá<th/>
                                   </tr>
                               </thead>
                               <tbody>
                                 @foreach($sinhviens as $sinhvien)
                                   <tr>
-                                    <td>{{$loop->index+1}}</td>
+                                      <td>{{$loop->index+1}}</td>
                                       <td>{{$sinhvien->class}}</td>
                                       <td>{{$sinhvien->mssv}}</td>
                                       <td>{{$sinhvien->tensinhvien}}</td>
                                       <td>{{$sinhvien->user->email}}</td>
-                                      <td><a href="{{route('sinhvien.delete',['id'=>$sinhvien->id])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xoá </a>
-                                      </td>
-                                </tr>
+                                      <td><a onclick="return xoa('Bạn có chắc xoá hay không')" href="{{route('sinhvien.delete',['id'=>$sinhvien->id])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xoá </a></td>
+                                      <td></td>
+                                  </tr>
                                 @endforeach
                               </tbody>
                           </table>
+
                       </div>
                   </div>
                 </div>
@@ -109,9 +120,5 @@
             </div>
           </div>
         </div>
-        <script type="text/javascript">
-         $(document).ready(function() {
-           $('#datatable').DataTable();
-        } );
-        </script>
+
 @endsection

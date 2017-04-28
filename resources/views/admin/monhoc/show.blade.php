@@ -7,22 +7,6 @@
           <div class="">
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                  <div class="x_panel">
-                        <div class="panel-body">
-                            <h4>Tạo học kỳ</h4>
-                            <form action="{{route('hocky.create')}}" method="POST">
-                              {{csrf_field()}}
-                              <input id='tenhocky' name="tenhocky"></input>
-                              <button type="submit" class="btn btn-success">Tạo</button>
-                            </form>
-                        </div>
-                  </div>
-              </div>
-          </div>
-            <div class="clearfix"></div>
-
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="panel-body">
                     <div class="title_left">
@@ -41,7 +25,7 @@
                                 @foreach($hocky as $hk)
                                   <tr>
                                       <td>{{$loop->index+1}}</td>
-                                      <td><a href="{{route('monhoc.addSV',['id'=>$hk->id])}}">{{$hk->tenhocky}}</a></td>                                  
+                                      <td><a href="{{route('monhoc.addSV',['id'=>$hk->id])}}">{{$hk->tenhocky}}</a></td>
                                   </tr>
                                 @endforeach
                               </tbody>

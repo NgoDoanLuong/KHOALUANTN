@@ -27,12 +27,14 @@
                         @foreach($tieuchi as $tieu)
                         <tr>
                           <td>{{$loop->index+1}}</td>
-                          <td>{{$tieu->tentieuchi}}</td>                      
-                          <td><input type="radio" name="{{$tieu->id}}" value="1"></input></td>
-                          <td><input type="radio" name="{{$tieu->id}}" value="2"></input></td>
-                          <td><input type="radio" name="{{$tieu->id}}" value="3"></input></td>
-                          <td><input type="radio" name="{{$tieu->id}}" value="4"></input></td>
-                          <td><input type="radio" name="{{$tieu->id}}" value="5"></input></td>
+                          <td>{{$tieu->tentieuchi}}</td>
+
+                          <td><input type="radio" name="{{$tieu->id}}" value="1" required></input></td>
+                          <td><input type="radio" name="{{$tieu->id}}" value="2" required></input></td>
+                          <td><input type="radio" name="{{$tieu->id}}" value="3" required></input></td>
+                          <td><input type="radio" name="{{$tieu->id}}" value="4" required></input></td>
+                          <td><input type="radio" name="{{$tieu->id}}" value="5" required></input></td>
+
                         </tr>
                         @endforeach
                       </tbody>

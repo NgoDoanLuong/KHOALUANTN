@@ -25,8 +25,8 @@ class TieuchiController extends Controller
         $tieuchi->tentieuchi=$request->tentieuchi;
         $tieuchi->hocky_id=$request->hocky_id;
         $tieuchi->save();
-        return redirect()->back();
-      }else return "tieuchitrung";
+        return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Tạo thành công']);
+      }else return redirect()->back()->with(['flash_level'=>'danger','flash_message'=>'Đã có tiêu chí trùng']);
     }
 
     public function addExcel(Request $request){
@@ -52,7 +52,7 @@ class TieuchiController extends Controller
         $diem->delete();
       }
       Tieuchi::find($id)->delete();
-      return redirect()->back();
+      return redirect()->back()->with(['message_delete'=>'Xoá thành công']);
     }
 
 

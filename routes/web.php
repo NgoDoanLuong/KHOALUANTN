@@ -31,7 +31,7 @@ Route::group(['prefix'=>'admin'],function(){
       Route::post('list/add',['as'=>'hocky.create','uses'=>'HocKyController@add']);
       Route::get('{id}/delete',['as'=>'hocky.delete','uses'=>'HocKyController@delete']);
 
-      Route::post('{hocky_id}/time',['as'=>'hocky.time','uses'=>'TimeController@createTime']);
+      Route::post('{hocky_id}/time',['as'=>'hocky.time','uses'=>'HocKyController@createTime']);
     });
 //Quan ly tieu chi
     Route::group(['prefix'=>'tieuchi'],function (){
@@ -50,7 +50,7 @@ Route::group(['prefix'=>'admin'],function(){
 
     Route::get('{id}/delete',['as'=>'sinhvien.delete','uses'=>'SinhvienController@delete']);
 
-    Route::get('search',['as'=>'sinhvien.search','uses'=>'SinhvienController@search']);
+  //  Route::get('search',['as'=>'sinhvien.search','uses'=>'SinhvienController@search']);
   });
 //Quan ly giang vien
   Route::group(['prefix'=>'giangvien'],function(){
@@ -79,12 +79,12 @@ Route::group(['prefix'=>'admin'],function(){
   //Quan ly danh sach sinh vien cua lop mon hoc
   Route::group(['prefix'=>'monhoc'],function(){
     Route::get('/',['as'=>'monhoc.show','uses'=>'MonhocController@show']);
-    Route::get('add',['as'=>'monhoc.showAdd','uses'=>'MonhocController@showAdd']);
+  //  Route::get('add',['as'=>'monhoc.showAdd','uses'=>'MonhocController@showAdd']);
     Route::post('add',['as'=>'monhoc.add','uses'=>'MonhocController@add']);
-    Route::get('listSV',['as'=>'monhoc.listSV','uses'=>'MonhocController@listSV']);
+  //  Route::get('listSV',['as'=>'monhoc.listSV','uses'=>'MonhocController@listSV']);
 
     Route::post('addExcel',['as'=>'monhoc.createSV','uses'=>'MonhocController@createSV_lop']);
-    Route::get('{id}/delete/sinhvien',['as'=>'monhoc.delete','uses'=>'MonhocController@delete']);
+  //  Route::get('{id}/delete/sinhvien',['as'=>'monhoc.delete','uses'=>'MonhocController@delete']);
 
     Route::get('{id}/addSV',['as'=>'monhoc.addSV','uses'=>'MonhocController@showAdd']);
     Route::get('{id}/deleteSV',['as'=>'monhoc.xoaSV','uses'=>'MonhocController@xoaSV']);
@@ -95,10 +95,12 @@ Route::group(['prefix'=>'admin'],function(){
 Route::get('/',['as'=>'getLogin','uses'=>'LoginController@getLogin']);
 Route::post('postLogin',['as'=>'postLogin','uses'=>'LoginController@postLogin']);
 
-Route::get('outout',['as'=>'getLogout','uses'=>'LoginController@logout']);
-//Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-//Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-//Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::get('logout',['as'=>'getLogout','uses'=>'LoginController@logout']);
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
 //Route::get('{id}/test',['as'=>'show_diem','uses'=>'DiemController@showDiem']);
 
 //Route::get('{id}/monhoc','DiemController@form');

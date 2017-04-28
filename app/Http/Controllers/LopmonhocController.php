@@ -33,10 +33,10 @@ class LopmonhocController extends Controller
           $lopmonhoc->hocky_id=$request->hocky_id;
           $lopmonhoc->giangvien_id=$giangvien->id;
           $lopmonhoc->save();
-          return redirect()->back();
+          return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Tạo thành công']);
       }
     }else{
-      return "Môn học bị trùng";
+      return redirect()->back()->with(['flash_level'=>'danger','flash_message'=>'Đã có lớp môn học này']);
     }
   }
 
@@ -63,7 +63,7 @@ class LopmonhocController extends Controller
         }
       }
       if(empty($chuacogiangvien)){
-        return redirect()->back();
+        return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Tạo thành công']);
       }else{
         echo "Chua co giang vien".$chuacogiangvien;
       }
@@ -79,7 +79,7 @@ class LopmonhocController extends Controller
         $monhoc->delete();
       }
       Lopmonhoc::find($id)->delete();
-      return redirect()->back();
+      return redirect()->back()->with(['message_delete'=>'Xoá thành công']);
     }
 
     public function getEdit($id){

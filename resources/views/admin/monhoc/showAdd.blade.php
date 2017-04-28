@@ -13,7 +13,11 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="x_panel">
                 <div class="panel-body">
-
+                  @if(Session::has('flash_message'))
+                  <div class=" alert alert-{!! Session::get('flash_level') !!}">
+                      {!! Session::get('flash_message') !!}
+                  </div>
+                  @endif
                   <form action="{{ route('monhoc.add') }}" method="post" class="form-horizontal form-label-left" novalidate>
                       {{csrf_field()}}
                       Chọn lớp môn học của học kì

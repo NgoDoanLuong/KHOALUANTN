@@ -15,8 +15,13 @@
                       <h4>Tên lớp môn học:{{$lopmonhoc->tenmonhoc}}</h4>
                     </div>
                   </div>
+                  @if(Session::has('message_delete'))
+                  <div class=" alert alert-success">
+                      {!! Session::get('message_delete') !!}
+                  </div>
+                  @endif
                     <div class="editable-responsive">
-                        <table class="table table-striped" id="datatable-editable">
+                        <table class="table table-striped" id="danhsach_lop">
                             <thead>
                                 <tr>
                                     <th>STT</th>
@@ -34,8 +39,8 @@
                                   <td>{{$sinhvien->sinhvien->class}}</td>
                                   <td>{{$sinhvien->sinhvien->tensinhvien}}</td>
                                   <td>
-                                    <a href="{{ route('monhoc.xoaSV',['id'=>$sinhvien->id]) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xoá </a>
-                                  </td>
+                                    <a onclick="return xoa('Bạn có chắc xoá hay không')" href="{{ route('monhoc.xoaSV',['id'=>$sinhvien->id]) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xoá </a>
+                                  </td>                      
                                 </tr>
                               @endforeach
                             </tbody>

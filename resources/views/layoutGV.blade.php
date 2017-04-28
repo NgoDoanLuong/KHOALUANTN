@@ -46,7 +46,7 @@
                 <img src="{{asset('images/dhcn.jpg')}}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Chào mừng,</span>
+                <span>Chào mừng giảng viên</span>
                 <h2>{{Auth::user()->name}}</h2>
               </div>
             </div>

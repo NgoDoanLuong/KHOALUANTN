@@ -43,9 +43,9 @@ class GiangvienController extends Controller
         $giangvien->magiangvien=$request->magiangvien;
         $giangvien->user_id=$user->id;
         $giangvien->save();
-        return redirect()->back();
+        return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Tạo thành công']);
       }else{
-        return "trung ma giang vien";
+        return redirect()->back()->with(['flash_level'=>'danger','flash_message'=>'Trùng giảng viên']);
       }
   }
 
@@ -67,7 +67,7 @@ class GiangvienController extends Controller
     $giangvien=Giangvien::find($id);
     Giangvien::find($id)->delete();
     User::find($giangvien->user_id)->delete();
-    return redirect()->back();
+    return redirect()->back()->with(['message_delete'=>'Xoá thành công']);
   }
 
 
@@ -94,7 +94,7 @@ class GiangvienController extends Controller
             continue;
             }
           }
-        return redirect()->back();
+        return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Tạo thành công']);
         }
 
         public function home_gv(){
@@ -102,15 +102,15 @@ class GiangvienController extends Controller
           $hockys=Hocky::orderBy('created_at','DESC')->get();
           $check_time=array();
           foreach($hockys as $hocky){
-            $start=Carbon::parse($hocky->start);
-            $end=Carbon::parse($hocky->end);
-            if($time_now<$start){
+            $batdau=Carbon::parse($hocky->batdau);
+            $ketthuc=Carbon::parse($hocky->ketthuc);
+            if($time_now<$batdau){
               array_push($check_time,-1);
             }
-            if($time_now>$end){
+            if($time_now>$ketthuc){
               array_push($check_time,1);
             }
-            if($time_now>=$start && $time_now<=$end){
+            if($time_now>=$batdau && $time_now<=$ketthuc){
               array_push($check_time,0);
             }
           }

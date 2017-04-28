@@ -7,6 +7,11 @@
           <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="x_panel">
                     <div class="panel-body">
+                      @if(Session::has('flash_message'))
+                      <div class=" alert alert-{!! Session::get('flash_level') !!}">
+                          {!! Session::get('flash_message') !!}
+                      </div>
+                      @endif
                         <h4>Tạo tiêu chí</h4>
                         <span>Chọn hoc kỳ:  </span>
                         <form action="{{route('tieuchi.add')}}" method="POST">
@@ -45,8 +50,12 @@
                     <h3>Danh sách tiêu chí</h3>
                   </div>
                   <div class="editable-responsive">
-
-                      <table class="table table-striped" id="datatable-editable">
+                    @if(Session::has('message_delete'))
+                    <div class=" alert alert-success">
+                        {!! Session::get('message_delete') !!}
+                    </div>
+                    @endif
+                      <table class="table table-striped" id="table_tieuchi">
                           <thead>
                               <tr>
                                   <th>STT</th>
@@ -64,8 +73,9 @@
                                 <td>{{$value->tenhocky}}</td>
                                 <td>{{$tieu->tentieuchi}}</td>
                                   <td >
-                                    <a href="{{route('tieuchi.delete',['id'=>$tieu->id])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xoá</a>
+                                    <a onclick="return xoa('Bạn có chắc xoá hay không')" href="{{route('tieuchi.delete',['id'=>$tieu->id])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xoá</a>
                                   </td>
+                                  <td></td>
                               </tr>
                               @endif
                               @endforeach

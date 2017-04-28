@@ -70,7 +70,9 @@ class DiemController extends Controller
       $lopmonhoc=Lopmonhoc::where('id',$monhoc->lopmonhoc_id)->first();
       $hocky=Hocky::where('id',$lopmonhoc->hocky_id)->first();
       $tieuchi=Tieuchi::where('hocky_id',$hocky->id)->get();
-      return view('sinhvien.update',compact('tieuchi','monhoc'));
+      $tap_diem=$monhoc->diems->toArray();
+
+     return view('sinhvien.update',compact('tieuchi','monhoc','tap_diem'));
     }
 
     public function danhgia($monhoc_id,Request $request){
@@ -82,8 +84,8 @@ class DiemController extends Controller
       $monhoc=Monhoc::find($monhoc_id);
       //$monhoc=Monhoc::where('sinhvien_id',$sinhvien->id)->where('lopmonhoc_id',$lopmonhoc->id)->first();
       $lopmonhoc=Lopmonhoc::where('id',$monhoc->lopmonhoc_id)->first();
-      $diems=Diem::where('monhoc_id',$monhoc->id)->count();
-      if($diems==0){
+    //  $diems=Diem::where('monhoc_id',$monhoc->id)->count();
+    //  if($diems==0){
       $tieuchi=Hocky::find($lopmonhoc->hocky_id)->tieuchis;
         foreach($tieuchi as $tc){
           $id_tieuchi=$tc->id;
@@ -93,11 +95,15 @@ class DiemController extends Controller
           $diem->tieuchi_id=$tc->id;
           $diem->monhoc_id=$monhoc->id;
           $diem->save();
-        }
-      }else return "da danh gia";
+        /*
+    }
+      }else return "da danh gia";    */
+
+    }
 
       return redirect()->route('sinhvien.home');
-    }
+
+  }
 
     public function update_diem($monhoc_id,Request $request){
         $monhoc=Monhoc::find($monhoc_id);
@@ -110,6 +116,6 @@ class DiemController extends Controller
           $diem->diemdanhgia=$diem_dg;
           $diem->save();
         }
-        return redirect()->back();
+        return redirect()->back()->with(['message_diem'=>'Đánh giá lại thành công']);
     }
 }

@@ -46,9 +46,9 @@ class SinhvienController extends Controller
           $sinhvien->user_id=$user->id;
           $sinhvien->save();
 
-          return redirect()->back();
+          return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Tạo thành công']);
         }else{
-          return "trung sinh vien";
+          return redirect()->back()->with(['flash_level'=>'danger','flash_message'=>'Trùng sinh viên']);
         }
     }
 
@@ -64,7 +64,7 @@ class SinhvienController extends Controller
       $sinhvien=Sinhvien::find($id);
       Sinhvien::find($id)->delete();
       User::find($sinhvien->user_id)->delete();
-      return redirect()->back();
+      return redirect()->back()->with(['message_delete'=>'Xoá thành công']);
     }
 
     public function addExcel(){
@@ -72,10 +72,8 @@ class SinhvienController extends Controller
       })->get();
       foreach($data as $data){
         $count=Sinhvien::where('mssv',$data['mssv'])->count();
-        if($count!=0){
-          continue;
-        }else{
-          //Tao user
+        if($count==0){
+         //Tao user
           $user=new User;
           $user->name=$data['tensinhvien'];
           $user->email=$data['email'];
@@ -90,9 +88,11 @@ class SinhvienController extends Controller
           $sinhvien->class=$data['lop'];
           $sinhvien->user_id=$user->id;
           $sinhvien->save();
+        }else{
+          continue;
         }
       }
-          return redirect()->back();
+          return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Tạo thành công']);
       }
 
       public function home_sv(){
@@ -100,15 +100,15 @@ class SinhvienController extends Controller
         $hockys=Hocky::orderBy('created_at','DESC')->get();
         $check_time=array();
         foreach($hockys as $hocky){
-          $start=Carbon::parse($hocky->start);
-          $end=Carbon::parse($hocky->end);
-          if($time_now<$start){
+          $batdau=Carbon::parse($hocky->batdau);
+          $ketthuc=Carbon::parse($hocky->ketthuc);
+          if($time_now<$batdau){
             array_push($check_time,-1);
           }
-          if($time_now>$end){
+          if($time_now>$ketthuc){
             array_push($check_time,1);
           }
-          if($time_now>=$start && $time_now<=$end){
+          if($time_now>=$batdau && $time_now<=$ketthuc){
             array_push($check_time,0);
           }
 

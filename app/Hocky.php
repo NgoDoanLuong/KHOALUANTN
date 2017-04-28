@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Hocky extends Model
 {
     protected$table='hockys';
-    protected $fillable=['tenhocky','start','end'];
+    protected $fillable=['tenhocky','batdau','ketthuc'];
 
     public function lopmonhocs(){
       return $this->hasMany('App\Lopmonhoc');

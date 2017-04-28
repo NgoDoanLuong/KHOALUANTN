@@ -9,12 +9,19 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="x_panel">
                         <div class="panel-body">
+                          <div class="col-lg-12">
                             <h4>Tạo học kỳ</h4>
+                            @if(Session::has('flash_message'))
+                            <div class=" alert alert-{!! Session::get('flash_level') !!}">
+                                {!! Session::get('flash_message') !!}
+                            </div>
+                            @endif
                             <form action="{{route('hocky.create')}}" method="POST">
                               {{csrf_field()}}
                               <input id='tenhocky' name="tenhocky"></input>
                               <button type="submit" class="btn btn-success">Tạo</button>
                             </form>
+                        </div>
                         </div>
                   </div>
               </div>
@@ -29,7 +36,11 @@
                       <h3>Danh sách học kỳ</h3>
                     </div>
                       <div class="editable-responsive">
-
+                        @if(Session::has('message_delete'))
+                        <div class=" alert alert-success">
+                            {!! Session::get('message_delete') !!}
+                        </div>
+                        @endif
                           <table class="table table-striped" id="datatable-editable">
                               <thead>
                                   <tr>
@@ -48,12 +59,12 @@
                                       <td>{{$hk->tenhocky}}</td>
                                       <form action="{{route('hocky.time',['hocky_id'=>$hk->id])}}" method="post">
                                         {{csrf_field()}}
-                                        <td><input type="datetime-local" name="start"></input></td>
-                                        <td><input type="datetime-local" name="end"></input></td>
+                                        <td><input type="datetime-local" name="batdau"></input></td>
+                                        <td><input type="datetime-local" name="ketthuc"></input></td>
                                         <td><button type="submit" class="btn btn-success">Tạo thời gian</button></td>
                                         </form>
                                       <td >
-                                        <a href="/admin/hocky/{{$hk->id}}/delete" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xoá</a>
+                                        <a onclick="return xoa('Bạn có chắc xoá hay không')" href="{{route('hocky.delete',['id'=>$hk->id])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xoá</a>
                                       </td>
                                   </tr>
                                 @endforeach

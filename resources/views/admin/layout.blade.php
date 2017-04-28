@@ -8,9 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Hệ thống đánh giá môn học trực tuyến </title>
-
     <!-- jQuery -->
-    <script src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script>
+
     <!-- Bootstrap -->
     <link href="{{asset('vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Font Awesome -->
@@ -23,20 +22,24 @@
     <!-- bootstrap-progressbar -->
     <link href="{{asset('vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="{{asset('vendors/jqvmap/dist/jqvmap.min.css')}}" rel="stylesheet"/>
+    <link href="{{asset('vendors/jqvmap/dist/jqvmap.min.css')}}" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
     <link href="{{asset('vendors/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
 
-
-
-
+    <script src="{{asset('jquery-3.2.1.min.js')}}"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+          <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
-      <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-
+    <script type="text/javascript">
+       function xoa(message){
+         if(window.confirm(message)){
+           return true;
+         }else return false;
+       }
+    </script>
 
   </head>
 
@@ -57,7 +60,7 @@
                 <img src="{{asset('images/dhcn.jpg')}}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Xin chào,</span>
+                <span>Xin chào quản trị viên</span>
                 <h2>{{Auth::user()->name}}</h2>
               </div>
             </div>
@@ -165,32 +168,31 @@
     <!-- Skycons -->
     <script src="{{asset('vendors/skycons/skycons.js')}}"></script>
     <!-- Flot -->
-    <script src="{{asset('vendors/Flot/jquery.flot.js')}}"></script>
-    <script src="{{asset('vendors/Flot/jquery.flot.pie.js')}}"></script>
-    <script src="{{asset('vendors/Flot/jquery.flot.time.js')}}"></script>
-    <script src="{{asset('vendors/Flot/jquery.flot.stack.js')}}"></script>
-    <script src="{{asset('vendors/Flot/jquery.flot.resize.js')}}"></script>
-    <!-- Flot plugins -->
-    <script src="{{asset('vendors/flot.orderbars/js/jquery.flot.orderBars.js')}}"></script>
-    <script src="{{asset('vendors/flot-spline/js/jquery.flot.spline.min.js')}}"></script>
-    <script src="{{asset('vendors/flot.curvedlines/curvedLines.js')}}"></script>
-    <!-- DateJS -->
-    <script src="{{asset('vendors/DateJS/build/date.js')}}"></script>
+
     <!-- JQVMap -->
-    <script src="{{asset('assets/vendors/jqvmap/dist/jquery.vmap.js')}}"></script>
+    <script src="{{asset('vendors/jqvmap/dist/jquery.vmap.js')}}"></script>
     <script src="{{asset('vendors/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
     <script src="{{asset('vendors/jqvmap/examples/js/jquery.vmap.sampledata.js')}}"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="{{asset('vendors/moment/min/moment.min.js')}}"></script>
-    <script src="{{asset('vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="{{asset('build/js/custom.min.js')}}"></script>
+      <!-- Datatables -->
 
-    <script src="{{asset('vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+   <!--<script src="{{asset('vendors/datatables.net-scroller/js/dataTables.scroller.min.jss')}}"></script>-->
 
+     <!-- Custom Theme Scripts -->
 
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
-
+   <script type="text/javascript">
+   $(document).ready(function() {
+      $('#tablesv').DataTable();
+      $('#tablegv').DataTable();
+      $('#table_lopmonhoc').DataTable();
+      $('#danhsach_lop').DataTable();
+      $('#table_tieuchi').DataTable();
+   } );
+   </script>
   </body>
 </html>

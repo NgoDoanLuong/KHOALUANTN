@@ -41,7 +41,7 @@ class MonhocController extends Controller
           continue;
         }
       }
-      return redirect()->back();
+      return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Tạo thành công']);
     }
     public function add(Request $request){
       $sinhvien=Sinhvien::where('mssv',$request->mssv)->first();
@@ -51,8 +51,8 @@ class MonhocController extends Controller
         $monhoc_SV->sinhvien_id=$sinhvien->id;
         $monhoc_SV->lopmonhoc_id=$request->lopmonhoc_id;
         $monhoc_SV->save();
-        return redirect()->back();
-      }else return "Lop da co sinh vien";
+        return redirect()->back()->with(['flash_level'=>'success','flash_message'=>'Tạo thành công']);
+      }else return redirect()->back()->with(['flash_level'=>'danger','flash_message'=>'Lớp đã có sinh viên này']);
     }
     public function listSV($id){
       $DS_sinhvien=Lopmonhoc::find($id)->monhocs;
@@ -64,6 +64,6 @@ class MonhocController extends Controller
         $diem->delete();
       }
       Monhoc::find($id)->delete();
-      return redirect()->back();
+      return redirect()->back()->with(['message_delete'=>'Xoá thành công']);
     }
 }
