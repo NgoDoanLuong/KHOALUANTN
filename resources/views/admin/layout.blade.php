@@ -30,8 +30,15 @@
     <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
 
     <script src="{{asset('jquery-3.2.1.min.js')}}"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
-          <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+    <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">-->
+
+    <link href="{{asset('vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
+
 
     <script type="text/javascript">
        function xoa(message){
@@ -94,6 +101,12 @@
                     </ul>
                   </li>
 
+                  <li><a><i class="fa fa-bar-chart-o"></i> Kết quả đánh giá<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{route('ketqua.show_hk')}}">Theo học kỳ</a></li>
+                    <li><a href="">Theo giảng viên</a></li>
+                    </ul>
+                  </li>
                 </ul>
               </div>
 
@@ -183,7 +196,7 @@
 
      <!-- Custom Theme Scripts -->
 
-  <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="{{asset('vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 
    <script type="text/javascript">
    $(document).ready(function() {

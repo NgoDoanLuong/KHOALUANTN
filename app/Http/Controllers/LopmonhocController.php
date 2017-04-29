@@ -92,7 +92,7 @@ class LopmonhocController extends Controller
       $lopmonhoc=Lopmonhoc::find($id);
       $check_gv=Giangvien::where('magiangvien',$request->magiangvien)->count();
       if($check_gv==0){
-        return "Chưa có giảng viên cho môn học";
+        return redirect()->back()->with(['level_edit'=>'danger','message_edit'=>'Chưa có giảng viên cho môn học']);
       }else{
         if($request->mamonhoc!=$lopmonhoc->mamonhoc){
           $check_lop=Lopmonhoc::where('magiangvien',$request->magiangvien)->count();
@@ -101,15 +101,15 @@ class LopmonhocController extends Controller
             $lopmonhoc->magiangvien=$request->magiangvien;
             $lopmonhoc->tenmonhoc->$request->tenmonhoc;
             $lopmonhoc->save();
-            return redirect()->back();
+            return redirect()->back()->with(['level_edit'=>'success','message_edit'=>'Thay đổi thành công']);
           }else{
-            return "trung mon hoc khac";
+            return redirect()->back()->with(['level_edit'=>'danger','message_edit'=>'Trùng với môn học khác']);
           }
         }else{
           $lopmonhoc->magiangvien=$request->magiangvien;
           $lopmonhoc->tenmonhoc=$request->tenmonhoc;
           $lopmonhoc->save();
-          return redirect()->back();
+          return redirect()->back()->with(['level_edit'=>'success','message_edit'=>'Thay đổi thành công']);
         }
       }
     }

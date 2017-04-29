@@ -61,10 +61,12 @@
                 <ul class="nav side-menu">
                   <li><a href="{{route('sinhvien.home')}}"><i class="fa fa-home"></i> Trang chủ</a>
                   </li>
-                </ul>
+
+                <li><a href="{{route('sinhvien.ketqua.show_hk')}}"><i class="fa fa-bar-chart-o"></i> Xem kết quả đánh giá</a>
+
+                </li>
+                  </ul>
               </div>
-
-
             </div>
             <!-- /sidebar menu -->
 

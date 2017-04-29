@@ -61,7 +61,7 @@ class DiemController extends Controller
       }
       $si_so=$sv_lop_hoc->count();
       $lopmonhoc=Lopmonhoc::find($id_lopmonhoc);
-      return view('result',compact('tieuchi','array_result','lopmonhoc','si_so','sv_da_danh_gia'));
+      return view('result',compact('tieuchi','array_result','lopmonhoc','si_so','sv_da_danh_gia','count_diem'));
     }
 
 

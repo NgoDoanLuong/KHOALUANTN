@@ -90,6 +90,13 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('{id}/deleteSV',['as'=>'monhoc.xoaSV','uses'=>'MonhocController@xoaSV']);
 
   });
+
+  //Quan ly ket qua
+  Route::group(['prefix'=>'ketqua'],function(){
+    Route::get('/',['as'=>'ketqua.show_hk','uses'=>'KetquaController@show_hk']);
+    Route::get('/{hk_id}/lopmonhoc',['as'=>'ketqua.show_lopmonhoc','uses'=>'KetquaController@show_lopmonhoc']);
+    Route::get('{id_lopmonhoc}/lopmonhoc/ketqua',['as'=>'admin.ketqua','uses'=>'DiemController@showDiem']);
+  });
 });
 });
 Route::get('/',['as'=>'getLogin','uses'=>'LoginController@getLogin']);
@@ -125,6 +132,13 @@ Route::group(['prefix'=>'sinhvien'],function(){
 
     Route::get('{monhoc_id}/update',['as'=>'diem.showUpdate','uses'=>'DiemController@form_update']);
     Route::post('{monhoc_id}/update',['as'=>'diem.update','uses'=>'DiemController@update_diem']);
+
+    Route::get('/ketqua',['as'=>'sinhvien.ketqua.show_hk','uses'=>'KetquaController@sinhvien_show_hk']);
+
+  Route::get('ketqua/{hk_id}/lopmonhoc',['as'=>'sinhvien.ketqua.show_lopmonhoc','uses'=>'KetquaController@sinhvien_show_lopmonhoc']);
+    Route::get('{id_lopmonhoc}/lopmonhoc/ketqua',['as'=>'sinhvien.ketqua','uses'=>'DiemController@showDiem']);  
+
+
 });
 });
 

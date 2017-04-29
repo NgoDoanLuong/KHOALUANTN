@@ -2,10 +2,25 @@
 @section('content')
 <div class="right_col" role="main">
         <div class="">
+          @if($count_diem==0)
           <div class="page-title">
             <div class="title_left">
-              <h3>Mã lớp môn học:{{$lopmonhoc->mamonhoc}}</h3>
-              <h3>Tên môn học:{{$lopmonhoc->tenmonhoc}}  </h3>
+              <h4>Mã lớp môn học:{{$lopmonhoc->mamonhoc}}</h4>
+              <h4>Tên giảng viên:{{$lopmonhoc->giangvien->tengiangvien}}</h4>
+              <h4>Tên môn học:{{$lopmonhoc->tenmonhoc}}  </h4>
+              <span>Sĩ số:{{$si_so}}</span>
+              </br>
+              <h3>Chưa có sinh viên đánh giá môn học này</h3>
+            </div>
+          </div>
+          <div class="row">
+          </div>
+          @else
+          <div class="page-title">
+            <div class="title_left">
+              <h4>Mã lớp môn học:{{$lopmonhoc->mamonhoc}}</h4>
+              <h4>Tên giảng viên:{{$lopmonhoc->giangvien->tengiangvien}}</h4>
+              <h4>Tên môn học:{{$lopmonhoc->tenmonhoc}}  </h4>
               <span>Sĩ số:{{$si_so}}</span>
               </br>
               <span>Số sinh viên đã đánh giá:{{$sv_da_danh_gia}}</span>
@@ -40,9 +55,9 @@
                         @endforeach
                       </tbody>
                     </table>
-
             </div>
           </div>
-        </div>
+          @endif
       </div>
+    </div>
 @endsection

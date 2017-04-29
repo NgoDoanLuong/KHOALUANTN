@@ -41,6 +41,11 @@
                             {!! Session::get('message_delete') !!}
                         </div>
                         @endif
+                        @if(Session::has('message_time'))
+                        <div class=" alert alert-success">
+                            {!! Session::get('message_time') !!}
+                        </div>
+                        @endif
                           <table class="table table-striped" id="datatable-editable">
                               <thead>
                                   <tr>
@@ -59,8 +64,8 @@
                                       <td>{{$hk->tenhocky}}</td>
                                       <form action="{{route('hocky.time',['hocky_id'=>$hk->id])}}" method="post">
                                         {{csrf_field()}}
-                                        <td><input type="datetime-local" name="batdau"></input></td>
-                                        <td><input type="datetime-local" name="ketthuc"></input></td>
+                                        <td><input type="datetime-local" name="batdau" value="{{old('batdau',isset($hk->batdau) ? $hk->batdau : null )}}"></input></td>
+                                        <td><input type="datetime-local" name="ketthuc" value="{{old('ketthuc',isset($hk->ketthuc) ? $hk->ketthuc : null )}}"></input></td>
                                         <td><button type="submit" class="btn btn-success">Tạo thời gian</button></td>
                                         </form>
                                       <td >

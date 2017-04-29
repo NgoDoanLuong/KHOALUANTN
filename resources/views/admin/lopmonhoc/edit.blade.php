@@ -9,6 +9,11 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="x_panel">
                 <div class="panel-body">
+                  @if(Session::has('message_edit'))
+                  <div class=" alert alert-{!! Session::get('level_edit') !!}">
+                      {!! Session::get('message_edit') !!}
+                  </div>
+                  @endif
                   <div class="page-title">
                     <div class="title_left">
                       <h3>Tên học kỳ:{{$hocky->tenhocky}}</h3>

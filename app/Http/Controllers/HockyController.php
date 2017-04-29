@@ -48,7 +48,7 @@ class HockyController extends Controller
       $hocky->batdau=$request->batdau;
       $hocky->ketthuc=$request->ketthuc;
       $hocky->save();
-      return redirect()->back();
+      return redirect()->back()->with(['message_time'=>'Thhêm thời gian thành công']);
   }
 
 }
