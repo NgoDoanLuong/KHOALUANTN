@@ -104,7 +104,7 @@
                   <li><a><i class="fa fa-bar-chart-o"></i> Kết quả đánh giá<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('ketqua.show_hk')}}">Theo học kỳ</a></li>
-                    <li><a href="">Theo giảng viên</a></li>
+                    <li><a href="{{route('ketqua.giangvien.list')}}">Theo giảng viên</a></li>
                     </ul>
                   </li>
                 </ul>
