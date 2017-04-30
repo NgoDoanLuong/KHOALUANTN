@@ -2,6 +2,10 @@
 @section('content')
 <div class="right_col" role="main">
           <div class="">
+            <div class="title_left">
+              <h4 style="color:#b30000">Mã giảng viên:{{$giangvien->magiangvien}}<h4>
+              <h4 style="color:#b30000">Tên giảng viên:{{$giangvien->tengiangvien}}<h4>
+            </div>
             @foreach($tong as $array)
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">

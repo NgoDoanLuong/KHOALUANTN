@@ -38,13 +38,9 @@ class KetquaController extends Controller
   }
 
   public function ketqua_giangvien($giangvien_id){
-    //$lopmonhocs=Giangvien::find($giangvien_id)->lopmonhocs;
     $hockys=Hocky::all();
-    //$ds_lop_mon_hoc=array();
     $tieuchis=array();
-    //$so_sv_dg_theo_tc=array();
-    //$array=array();
-    //$ARRAY=array();
+
     $taplop=array();
     $result=array();
     $tong=array();
@@ -52,9 +48,7 @@ class KetquaController extends Controller
 
       $lopmonhocs=Lopmonhoc::where('hocky_id',$hocky->id)->where('giangvien_id',$giangvien_id)->get();
       $check=Lopmonhoc::where('hocky_id',$hocky->id)->where('giangvien_id',$giangvien_id)->count();
-      //$tieuchi=$hocky->tieuchis;
-      //array_push($ds_lop_mon_hoc,$lopmonhocs);
-      //array_push($tieuchis,$tieuchi);
+
       if($check!=0){
           $ARRAY=array();
       foreach($lopmonhocs as $lop){
@@ -94,6 +88,7 @@ class KetquaController extends Controller
       }
       }
     }
-    return view('admin.ketqua.lop_giangvien',compact('tong'));
+    $giangvien=Giangvien::find($giangvien_id);
+    return view('admin.ketqua.lop_giangvien',compact('tong','giangvien'));
   }
 }
