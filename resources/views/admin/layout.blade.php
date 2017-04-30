@@ -39,6 +39,7 @@
     <link href="{{asset('vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
 
+    <script src="{{asset('Chart.min.js')}}"></script>
 
     <script type="text/javascript">
        function xoa(message){

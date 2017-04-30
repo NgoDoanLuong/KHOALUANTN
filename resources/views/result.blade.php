@@ -47,7 +47,7 @@
                               <td>{{$loop->index+1}}</td>
                               <td>{{$tieu->tentieuchi}}</td>
                               @foreach($array_result[$loop->index] as $arr)
-                              <?php $phan_tram=round(($arr/$sv_da_danh_gia)*100 , 2) ?>
+                              <?php $phan_tram=round(($arr/$sv_da_danh_gia)*100 , 2); ?>
                               <td><i>{{$arr}}  -- ({{$phan_tram}}%)</i></td>
 
                               @endforeach
