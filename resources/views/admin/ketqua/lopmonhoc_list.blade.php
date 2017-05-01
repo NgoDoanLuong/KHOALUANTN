@@ -15,7 +15,7 @@
             </div>
           </div>
             <div class="editable-responsive">
-                <table class="table table-striped" id="">
+                <table class="table table-striped" id="table_lopmonhoc">
                     <thead>
                         <tr>
                             <th>STT</th>
@@ -31,7 +31,7 @@
                               <td>{{$lopmonhoc->mamonhoc}}</td>
                               <td>{{$lopmonhoc->magiangvien}}</td>
                               <td><a href="{{route('admin.ketqua',['id_lopmonhoc'=>$lopmonhoc->id])}}">{{$lopmonhoc->tenmonhoc}}</a></td>
-                            <td></td>
+
                         </tr>
                         @endforeach
                     </tbody>

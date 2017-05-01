@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Validator;
 class LopmonhocController extends Controller
 {
     public function show(){
-        $hockys=Hocky::all();
+        $hockys=Hocky::orderBy('created_at','DESC')->get();
         $lopmonhocs=Lopmonhoc::all();
         return view('admin.lopmonhoc.list',compact('hockys','lopmonhocs'));
     }

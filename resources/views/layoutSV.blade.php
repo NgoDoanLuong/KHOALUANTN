@@ -27,6 +27,16 @@
 
     <!-- Custom Theme Style -->
     <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
+
+    <script src="{{asset('jquery-3.2.1.min.js')}}"></script>
+
+    <link href="{{asset('vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
+
+
   </head>
 
   <body class="nav-md">
@@ -91,7 +101,7 @@
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
 
-                    <li><a href="javascript:;">Help</a></li>
+
                     <li><a href="{{route('getLogout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
@@ -158,6 +168,13 @@
 
     <!-- Custom Theme Scripts -->
     <script src="{{asset('build/js/custom.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+
+     <script type="text/javascript">
+     $(document).ready(function() {
+        $('#table_lopmonhoc').DataTable();
+     } );
+     </script>
 
   </body>
 </html>
