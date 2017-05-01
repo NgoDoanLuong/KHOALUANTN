@@ -7,12 +7,26 @@ use App\Hocky;
 use App\Lopmonhoc;
 use App\Tieuchi;
 use App\Diem;
+use Carbon\Carbon;
 class HockyController extends Controller
 {
     //
     public function show(){
     $hocky=Hocky::orderBy('created_at','DESC')->get();
-    return view('admin.hocky.add',compact('hocky'));
+    $time=Hocky::select('batdau')->first();
+    $time_start=array();
+    $time_end=array();
+    foreach($hocky as $hk){
+        $time1_start= Carbon::parse($hk->batdau);
+        $time2_start=$time1_start->format('Y-m-d\Th:i');
+        array_push($time_start,$time2_start);
+
+        $time1_end= Carbon::parse($hk->ketthuc);
+        $time2_end=$time1_end->format('Y-m-d\Th:i');
+        array_push($time_end,$time2_end);
+
+    }
+    return view('admin.hocky.add',compact('hocky','time_start','time_end'));
   }
   public function add(Request $request){
       $hocky=new Hocky;

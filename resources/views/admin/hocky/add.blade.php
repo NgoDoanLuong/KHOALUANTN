@@ -64,14 +64,15 @@
                                       <td>{{$hk->tenhocky}}</td>
                                       <form action="{{route('hocky.time',['hocky_id'=>$hk->id])}}" method="post">
                                         {{csrf_field()}}
-                                        <td><input type="datetime-local" name="batdau" value="{{old('batdau',isset($hk->batdau) ? $hk->batdau : null )}}"></input></td>
-                                        <td><input type="datetime-local" name="ketthuc" value="{{old('ketthuc',isset($hk->ketthuc) ? $hk->ketthuc : null )}}"></input></td>
+                                        <td><input  type="datetime-local" name="batdau" value="{{old('batdau',isset($time_start[$loop->index]) ? $time_start[$loop->index] : null )}}"></input></td>
+                                        <td><input  type="datetime-local" name="ketthuc" value="{{old('ketthuc',isset($time_end[$loop->index]) ? $time_end[$loop->index] : null )}}"></input></td>
                                         <td><button type="submit" class="btn btn-success">Tạo thời gian</button></td>
                                         </form>
                                       <td >
                                         <a onclick="return xoa('Bạn có chắc xoá hay không')" href="{{route('hocky.delete',['id'=>$hk->id])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xoá</a>
                                       </td>
                                   </tr>
+
                                 @endforeach
                               </tbody>
                           </table>
