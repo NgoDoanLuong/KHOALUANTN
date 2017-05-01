@@ -136,7 +136,7 @@
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
 
-            
+
                     <li><a href="{{route('getLogout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
@@ -198,6 +198,9 @@
      <!-- Custom Theme Scripts -->
 
   <script type="text/javascript" src="{{asset('vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>
 
    <script type="text/javascript">
    $(document).ready(function() {
