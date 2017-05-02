@@ -19,14 +19,18 @@
                                   <tr>
                                       <th>STT</th>
                                       <th>Tên học kỳ</th>
+                                      <th>Xem</th>
                                   </tr>
                               </thead>
                               <tbody>
                                 @foreach($hocky as $hk)
+                                @if($check_time[$loop->index]!=-1)
                                   <tr>
                                       <td>{{$loop->index+1}}</td>
-                                      <td><a href="{!! route('sinhvien.ketqua.show_lopmonhoc',['hk_id'=>$hk->id]) !!}">{{$hk->tenhocky}}</a></td>
+                                      <td>{{$hk->tenhocky}}</td>
+                                      <td><button class="btn btn-success"><a href="{!! route('sinhvien.ketqua.show_lopmonhoc',['hk_id'=>$hk->id]) !!}">Xem</a></button></td>
                                   </tr>
+                                @endif
                                 @endforeach
                               </tbody>
                           </table>

@@ -8,11 +8,28 @@ use App\Lopmonhoc;
 use App\Tieuchi;
 use App\Diem;
 use App\Giangvien;
+use Carbon\Carbon;
 class KetquaController extends Controller
 {
   public function show_hk(){
-    $hocky=Hocky::orderBy('created_at','DESC')->get();;
-    return view('admin.ketqua.hocky_list',compact('hocky'));
+    $hocky=Hocky::orderBy('created_at','DESC')->get();
+    $time_now=Carbon::now('Asia/Ho_Chi_Minh');
+    $check_time=array();
+    foreach($hocky as $hk){
+      $batdau=Carbon::parse($hk->batdau);
+      $ketthuc=Carbon::parse($hk->ketthuc);
+      if($time_now<$batdau){
+        array_push($check_time,-1);
+      }
+      if($time_now>$ketthuc){
+        array_push($check_time,1);
+      }
+      if($time_now>=$batdau && $time_now<=$ketthuc){
+        array_push($check_time,0);
+      }
+
+    }
+    return view('admin.ketqua.hocky_list',compact('hocky','check_time'));
   }
 
   public function show_lopmonhoc($hk_id){
@@ -22,8 +39,24 @@ class KetquaController extends Controller
   }
 
   public function sinhvien_show_hk(){
-    $hocky=Hocky::orderBy('created_at','DESC')->get();;
-    return view('sinhvien.hocky_list',compact('hocky'));
+    $hocky=Hocky::orderBy('created_at','DESC')->get();
+    $time_now=Carbon::now('Asia/Ho_Chi_Minh');
+    $check_time=array();
+    foreach($hocky as $hk){
+      $batdau=Carbon::parse($hk->batdau);
+      $ketthuc=Carbon::parse($hk->ketthuc);
+      if($time_now<$batdau){
+        array_push($check_time,-1);
+      }
+      if($time_now>$ketthuc){
+        array_push($check_time,1);
+      }
+      if($time_now>=$batdau && $time_now<=$ketthuc){
+        array_push($check_time,0);
+      }
+
+    }
+    return view('sinhvien.hocky_list',compact('hocky','check_time'));
   }
 
   public function sinhvien_show_lopmonhoc($hk_id){

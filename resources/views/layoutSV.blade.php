@@ -102,7 +102,7 @@
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
 
 
-                    <li><a href="{{route('getLogout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="{{route('getLogout')}}"><i class="fa fa-sign-out pull-right"></i> Thoát</a></li>
                   </ul>
                 </li>
 
