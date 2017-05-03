@@ -30,7 +30,7 @@
                               <td>{{$loop->index+1}}</td>
                               <td>{{$lopmonhoc->mamonhoc}}</td>
                               <td>{{$lopmonhoc->magiangvien}}</td>
-                              <td><a href="{{route('sinhvien.ketqua',['id_lopmonhoc'=>$lopmonhoc->id])}}">{{$lopmonhoc->tenmonhoc}}</a></td>
+                              <td><a href="{{route('sinhvien.ketqua',['id_lopmonhoc'=>$lopmonhoc->id])}}" style="color:blue">{{$lopmonhoc->tenmonhoc}}</a></td>
 
                         </tr>
                         @endforeach

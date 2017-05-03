@@ -18,6 +18,7 @@
         </div>
       </div>
           @else
+          <div class="clearfix"></div>
           <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="page-title">
@@ -62,8 +63,8 @@
             </div>
           </div>
         </div>
-          @endif
           @if(Auth::user()->role==1)
+          <div class="clearfix"></div>
           <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="page-title">
@@ -95,6 +96,7 @@
           </div>
           </div>
           </div>
+          @endif
           @endif
       </div>
     </div>
