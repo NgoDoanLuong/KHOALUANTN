@@ -27,12 +27,18 @@ class DiemController extends Controller
 
       $tieuchi=Hocky::find($hocky_id)->tieuchis;
         $sinhvien_arr=array();
+        $sinhvien_chua_danh_gia=array();
       foreach($sv_lop_hoc as $sinhvien){
         $check_sv_danhgia=$sinhvien->diems->count();
         if($check_sv_danhgia!=0){
           array_push($sinhvien_arr,$sinhvien);
+        }else{
+          array_push($sinhvien_chua_danh_gia,$sinhvien);
         }
+
       }
+
+
       // comment:toggle$array=array();
       $array_result=array();
       $so_sv_danhgia=count($sinhvien_arr);
@@ -61,7 +67,7 @@ class DiemController extends Controller
       }
       $si_so=$sv_lop_hoc->count();
       $lopmonhoc=Lopmonhoc::find($id_lopmonhoc);
-      return view('result',compact('tieuchi','array_result','lopmonhoc','si_so','sv_da_danh_gia','count_diem'));
+      return view('result',compact('tieuchi','array_result','lopmonhoc','si_so','sv_da_danh_gia','count_diem','sinhvien_chua_danh_gia'));
     }
 
 
@@ -118,4 +124,6 @@ class DiemController extends Controller
         }
         return redirect()->back()->with(['message_diem'=>'Đánh giá lại thành công']);
     }
+
+
 }

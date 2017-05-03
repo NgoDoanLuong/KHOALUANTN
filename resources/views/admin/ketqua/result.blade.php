@@ -1,10 +1,9 @@
-@extends(Auth::user()->role==3 ? 'layoutSV' : (Auth::user()->role==2 ? 'layoutGV' : 'admin.layout'))
+@extends('layout')
 @section('content')
 <div class="right_col" role="main">
         <div class="">
-          @if($count_diem==0)
           <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
+          @if($count_diem==0)
           <div class="page-title">
             <div class="title_left">
               <h4>Mã lớp môn học:{{$lopmonhoc->mamonhoc}}</h4>
@@ -15,11 +14,8 @@
               <h3>Chưa có sinh viên đánh giá môn học này</h3>
             </div>
           </div>
-        </div>
-      </div>
+
           @else
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="page-title">
             <div class="title_left">
               <h4>Mã lớp môn học:{{$lopmonhoc->mamonhoc}}</h4>
@@ -30,7 +26,7 @@
               <span>Số sinh viên đã đánh giá:{{$sv_da_danh_gia}}</span>
             </div>
           </div>
-
+          <div class="row">
             <div class="editable-responsive">
 
                     <table class="table table-bordered">
@@ -60,40 +56,6 @@
                       </tbody>
                     </table>
             </div>
-          </div>
-        </div>
-          @endif
-          @if(Auth::user()->role==1)
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="page-title">
-              <div class="title_left">
-                <h4>Danh sách sinh viên chưa đánh giá<h4>
-              </div>
-            </div>
-          <div class="editable-responsive">
-              <table class="table table-striped" id="danhsach_lop">
-                  <thead>
-                      <tr>
-                          <th>STT</th>
-                          <th>Mã số sinh viên</th>
-                          <th>Lớp</th>
-                          <th>Tên sinh viên</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                    @foreach($sinhvien_chua_danh_gia as $sinhvien)
-                    <tr>
-                        <td>{{$loop->index+1}}</td>
-                        <td>{{$sinhvien->sinhvien->mssv}}</td>
-                        <td>{{$sinhvien->sinhvien->class}}</td>
-                        <td>{{$sinhvien->sinhvien->tensinhvien}}</td>
-                      </tr>
-                    @endforeach
-                  </tbody>
-              </table>
-          </div>
-          </div>
           </div>
           @endif
       </div>
