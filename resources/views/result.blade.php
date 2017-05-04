@@ -7,10 +7,10 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="page-title">
             <div class="title_left">
-              <h4>Mã lớp môn học:{{$lopmonhoc->mamonhoc}}</h4>
-              <h4>Tên giảng viên:{{$lopmonhoc->giangvien->tengiangvien}}</h4>
-              <h4>Tên môn học:{{$lopmonhoc->tenmonhoc}}  </h4>
-              <span>Sĩ số:{{$si_so}}</span>
+              <h4>Mã lớp môn học: {{$lopmonhoc->mamonhoc}}</h4>
+              <h4>Tên giảng viên: {{$lopmonhoc->giangvien->tengiangvien}}</h4>
+              <h4>Tên môn học: {{$lopmonhoc->tenmonhoc}}  </h4>
+              <span>Sĩ số: {{$si_so}}</span>
               </br>
               <h3>Chưa có sinh viên đánh giá môn học này</h3>
             </div>
@@ -23,12 +23,12 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="page-title">
             <div class="title_left">
-              <h4>Mã lớp môn học:{{$lopmonhoc->mamonhoc}}</h4>
-              <h4>Tên giảng viên:{{$lopmonhoc->giangvien->tengiangvien}}</h4>
-              <h4>Tên môn học:{{$lopmonhoc->tenmonhoc}}  </h4>
-              <span>Sĩ số:{{$si_so}}</span>
+              <h4>Mã lớp môn học: {{$lopmonhoc->mamonhoc}}</h4>
+              <h4>Tên giảng viên: {{$lopmonhoc->giangvien->tengiangvien}}</h4>
+              <h4>Tên môn học: {{$lopmonhoc->tenmonhoc}}  </h4>
+              <span>Sĩ số: {{$si_so}}</span>
               </br>
-              <span>Số sinh viên đã đánh giá:{{$sv_da_danh_gia}}</span>
+              <span>Số sinh viên đã đánh giá: {{$sv_da_danh_gia}}</span>
             </div>
           </div>
 

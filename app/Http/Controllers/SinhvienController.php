@@ -71,8 +71,9 @@ class SinhvienController extends Controller
       $data=Excel::load(Input::file('file'),function($reader){
       })->get();
       foreach($data as $data){
-        $count=Sinhvien::where('mssv',$data['mssv'])->count();
-        if($count==0){
+        $count1=Sinhvien::where('mssv',$data['mssv'])->count();
+        $count2=User::where('email',$data['email'])->count();
+        if($count1==0 && $count2==0){
          //Tao user
           $user=new User;
           $user->name=$data['tensinhvien'];

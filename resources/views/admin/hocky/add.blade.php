@@ -46,6 +46,7 @@
                             {!! Session::get('message_time') !!}
                         </div>
                         @endif
+                          <div class="x_content">
                           <table class="table table-striped" id="datatable-editable">
                               <thead>
                                   <tr>
@@ -77,6 +78,7 @@
                               </tbody>
                           </table>
                       </div>
+                    </div>
                   </div>
                 </div>
               </div>

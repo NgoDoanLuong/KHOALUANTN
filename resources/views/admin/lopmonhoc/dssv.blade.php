@@ -3,7 +3,7 @@
 @section('content')
 <div class="right_col" role="main">
         <div class="">
-          <div class="row">
+
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="x_panel">
                 <div class="panel-body">
@@ -11,8 +11,8 @@
                     <div class="title_left">
                       <h3>Danh sách sinh viên lớp môn học</h3>
                       <h4>Học kỳ: {{$lopmonhoc->hocky->tenhocky}}</h4>
-                      <h4> Mã lớp môn học:{{$lopmonhoc->mamonhoc}}</h4>
-                      <h4>Tên lớp môn học:{{$lopmonhoc->tenmonhoc}}</h4>
+                      <h4> Mã lớp môn học: {{$lopmonhoc->mamonhoc}}</h4>
+                      <h4>Tên lớp môn học: {{$lopmonhoc->tenmonhoc}}</h4>
                     </div>
                   </div>
                   @if(Session::has('message_delete'))
@@ -20,8 +20,11 @@
                       {!! Session::get('message_delete') !!}
                   </div>
                   @endif
-                    <div class="editable-responsive">
-                        <table class="table table-striped" id="danhsach_lop">
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="card-box table-responsive">
+                        <table class="table table-striped table-bordered" id="danhsach_lop">
                             <thead>
                                 <tr>
                                     <th>STT</th>
@@ -40,7 +43,7 @@
                                   <td>{{$sinhvien->sinhvien->tensinhvien}}</td>
                                   <td>
                                     <a onclick="return xoa('Bạn có chắc xoá hay không')" href="{{ route('monhoc.xoaSV',['id'=>$sinhvien->id]) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xoá </a>
-                                  </td>                      
+                                  </td>
                                 </tr>
                               @endforeach
                             </tbody>
@@ -52,4 +55,7 @@
           </div>
         </div>
       </div>
+    </div>
+
+</div>
 @endsection

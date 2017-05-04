@@ -9,12 +9,12 @@
                   {!! Session::get('message_diem') !!}
               </div>
               @endif
-              <h3>Đánh giá lại môn:{{$monhoc->lopmonhoc->tenmonhoc}} </h3>
+              <h3>Đánh giá lại môn: {{$monhoc->lopmonhoc->tenmonhoc}} </h3>
             </div>
           </div>
           <div class="row">
             <div class="editable-responsive">
-        
+
               <form action="{{route('diem.update',['monhoc_id'=>$monhoc->id])}}" method="post">
                 {{csrf_field()}}
                     <table class="table table-bordered">

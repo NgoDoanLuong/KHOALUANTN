@@ -6,7 +6,7 @@
         <div class="">
           <div class="page-title">
             <div class="title_left">
-              <h3>Tên học kỳ:{{$hocky->tenhocky}}</h3>
+              <h3>Tên học kỳ: {{$hocky->tenhocky}}</h3>
             </div>
           </div>
           <div class="row">
@@ -20,7 +20,7 @@
                   @endif
                   <form action="{{ route('monhoc.add') }}" method="post" class="form-horizontal form-label-left" novalidate>
                       {{csrf_field()}}
-                      Chọn lớp môn học của học kì
+                      Chọn lớp môn học của học kỳ
                       <select name="lopmonhoc_id">
                         @foreach($lopmonhoc as $lop)
                           <option value="{{$lop->id}}">{{$lop->mamonhoc}}--{{$lop->tenmonhoc}}</option>
@@ -52,7 +52,7 @@
 
                   <form action="{{ route('monhoc.createSV') }}" method="post" class="form-horizontal form-label-left" enctype="multipart/form-data" novalidate>
                       {{csrf_field()}}
-                      Chọn lớp môn học của học kì
+                      Chọn lớp môn học của học kỳ
                       <select name="lopmonhoc_id">
                         @foreach($lopmonhoc as $lop)
                           <option value="{{$lop->id}}">{{$lop->mamonhoc}}--{{$lop->tenmonhoc}}</option>

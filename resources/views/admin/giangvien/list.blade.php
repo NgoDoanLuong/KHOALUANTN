@@ -16,9 +16,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-
-                    <h2>Tạo tài khoản cho giảng viên </h2>
-
+                    <h3>Tạo tài khoản cho giảng viên</h3>
                   </div>
                   <div class="x_content">
                     @if(Session::has('flash_message'))
@@ -80,7 +78,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="panel-body">
-
+                    <h3>Danh sách giảng viên</h3>
                       <div class="editable-responsive">
                         @if(Session::has('message_delete'))
                         <div class=" alert alert-success">

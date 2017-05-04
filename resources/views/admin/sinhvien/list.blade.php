@@ -4,9 +4,6 @@
 @section('content')
 <div class="right_col" role="main">
           <div class="">
-
-            <div class="clearfix"></div>
-
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
@@ -75,19 +72,23 @@
                   </div>
                 </div>
             </div>
+            <div class="clearfix"></div>
 
-            <div class="row">
+
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="panel-body">
                     <h3>Danh sách sinh viên</h3>
-                      <div class="x_content">
                         @if(Session::has('message_delete'))
                         <div class=" alert alert-success">
                             {!! Session::get('message_delete') !!}
                         </div>
                         @endif
-                          <table id="tablesv" class="table table-striped" >
+                        <div class="x_content">
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <div class="card-box table-responsive">
+                          <table class="table table-striped table-bordered"  id="tablesv" >
                               <thead>
                                   <tr>
                                       <th>STT</th>
@@ -101,6 +102,7 @@
                               <tbody>
                                 @foreach($sinhviens as $sinhvien)
                                   <tr>
+
                                       <td>{{$loop->index+1}}</td>
                                       <td>{{$sinhvien->class}}</td>
                                       <td>{{$sinhvien->mssv}}</td>
@@ -112,13 +114,14 @@
                                 @endforeach
                               </tbody>
                           </table>
-
+                        </div>
                       </div>
+                    </div>
+                        </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
 @endsection

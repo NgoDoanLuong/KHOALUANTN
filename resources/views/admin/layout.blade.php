@@ -81,7 +81,7 @@
               <div class="menu_section">
                 <h3>Quản lý</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Trang chủ</a>
+                  <li><a href="{{route('hocky.list')}}"><i class="fa fa-home"></i> Trang chủ</a>
                   </li>
                   <li><a href="{{route('sinhvien.list')}}"><i class="fa fa-edit"></i> Quản lý sinh viên </a>
 
@@ -89,20 +89,20 @@
                   <li><a href="{{route('giangvien.list')}}"><i class="fa fa-desktop"></i> Quản lý giảng viên</a>
 
                   </li>
-                  <li><a><i class="fa fa-table"></i> Quản lý lớp môn học <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-table"></i> Quản lý lớp môn học </a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('lopmonhoc.showAdd')}}">Tạo lớp môn học</a></li>
                       <li><a href="{{route('monhoc.show')}}">Tạo sinh viên lớp học</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Quản lý tiêu chí&Học kỳ<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-bar-chart-o"></i> Quản lý tiêu chí & Học kỳ</a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('hocky.list')}}">Quản lý học kỳ</a></li>
                     <li><a href="{{route('tieuchi.list')}}">Quản lý tiêu chí</a></li>
                     </ul>
                   </li>
 
-                  <li><a><i class="fa fa-bar-chart-o"></i> Kết quả đánh giá<span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-bar-chart-o"></i> Kết quả đánh giá</a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('ketqua.show_hk')}}">Theo học kỳ</a></li>
                     <li><a href="{{route('ketqua.giangvien.list')}}">Theo giảng viên</a></li>
@@ -190,7 +190,7 @@
     <!-- bootstrap-daterangepicker -->
 
     <!-- Custom Theme Scripts -->
-    <script src="{{asset('build/js/custom.min.js')}}"></script>
+
       <!-- Datatables -->
 
    <!--<script src="{{asset('vendors/datatables.net-scroller/js/dataTables.scroller.min.jss')}}"></script>-->
@@ -201,6 +201,14 @@
   <script type="text/javascript" src="{{asset('vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
   <script type="text/javascript" src="{{asset('vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
   <script type="text/javascript" src="{{asset('vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('vendors/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('vendors/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('vendors/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('vendors/datatables.net-scroller/js/dataTables.scroller.min.js')}}"></script>
+
+
+    <script src="{{asset('build/js/custom.min.js')}}"></script>
+
 
    <script type="text/javascript">
    $(document).ready(function() {

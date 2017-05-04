@@ -75,8 +75,9 @@ class GiangvienController extends Controller
         $data=Excel::load(Input::file('file'),function($reader){
         })->get();
         foreach($data as $data){
-          $count=Giangvien::where('magiangvien',$data['magiangvien'])->count();
-          if($count==0){
+          $count1=Giangvien::where('magiangvien',$data['magiangvien'])->count();
+          $count2=User::where('email',$data['email'])->count();
+          if($count1==0 && $count2==0){
             //Tao user
             $user =new User;
             $user->email=$data['email'];

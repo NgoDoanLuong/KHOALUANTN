@@ -86,7 +86,6 @@
                   <div class="page-title">
                     <div class="title_left">
                       <h3>Danh sách lớp môn học</h3>
-
                     </div>
                   </div>
                   @if(Session::has('message_delete'))
@@ -111,7 +110,7 @@
                                 @foreach($lopmonhocs as $lopmonhoc)
                                 @if($lopmonhoc->hocky_id==$hocky->id)
                                   <tr>
-                                    
+
                                       <td>{{$loop->index+1}}</td>
                                       <td>{{$hocky->tenhocky}}</td>
                                       <td>{{$lopmonhoc->mamonhoc}}</td>
