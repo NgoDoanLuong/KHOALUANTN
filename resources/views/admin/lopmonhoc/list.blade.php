@@ -102,7 +102,7 @@
                                     <th>Mã lớp môn học</th>
                                     <th>Mã giảng viên</th>
                                     <th>Tên môn học</th>
-                                    <th>Sửa/Xoá<th/>
+                                    <th>Xem danh sách--Sửa--Xoá<th/>
                                 </tr>
                             </thead>
                             <tbody>
@@ -115,8 +115,9 @@
                                       <td>{{$hocky->tenhocky}}</td>
                                       <td>{{$lopmonhoc->mamonhoc}}</td>
                                       <td>{{$lopmonhoc->magiangvien}}</td>
-                                      <td><a href="{{route('lopmonhoc.listSV',['id'=>$lopmonhoc->id])}}">{{$lopmonhoc->tenmonhoc}}</a></td>
+                                      <td>{{$lopmonhoc->tenmonhoc}}</td>
                                     <td >
+                                      <a href="{{route('lopmonhoc.listSV',['id'=>$lopmonhoc->id])}}" class="btn btn-success btn-xs">Xem sinh viên</a>
                                       <a href="{{route('lopmonhoc.getEdit',['id'=>$lopmonhoc->id])}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Sửa  </a>
                                       <a onclick="return xoa('Bạn có chắc xoá hay không')" href="{{route('lopmonhoc.delete',['id'=>$lopmonhoc->id])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xoá </a>
                                     </td>

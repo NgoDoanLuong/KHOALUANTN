@@ -59,7 +59,7 @@
               <div class="menu_section">
                 <h3>Quản lý</h3>
                 <ul class="nav side-menu">
-                  <li><a href="{{route('giangvien.home')}}"><i class="fa fa-home"></i> Trang chủ</a>
+                  <li><a href="{{route('giangvien.home')}}"><i class="fa fa-home"></i>Xem kết quả đánh giá</a>
                   </li>
                 </ul>
               </div>

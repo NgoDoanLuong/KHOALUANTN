@@ -81,8 +81,7 @@
               <div class="menu_section">
                 <h3>Quản lý</h3>
                 <ul class="nav side-menu">
-                  <li><a href="{{route('hocky.list')}}"><i class="fa fa-home"></i> Trang chủ</a>
-                  </li>
+        
                   <li><a href="{{route('sinhvien.list')}}"><i class="fa fa-edit"></i> Quản lý sinh viên </a>
 
                   </li>

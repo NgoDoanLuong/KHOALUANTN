@@ -69,7 +69,7 @@
               <div class="menu_section">
                 <h3>Quản lý</h3>
                 <ul class="nav side-menu">
-                  <li><a href="{{route('sinhvien.home')}}"><i class="fa fa-home"></i> Trang chủ</a>
+                  <li><a href="{{route('sinhvien.home')}}"><i class="fa fa-home"></i>Đánh giá môn học</a>
                   </li>
 
                 <li><a href="{{route('sinhvien.ketqua.show_hk')}}"><i class="fa fa-bar-chart-o"></i> Xem kết quả đánh giá</a>
