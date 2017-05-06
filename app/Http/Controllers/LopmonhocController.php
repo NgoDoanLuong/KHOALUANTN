@@ -15,7 +15,7 @@ class LopmonhocController extends Controller
 {
     public function show(){
         $hockys=Hocky::orderBy('created_at','DESC')->get();
-        $lopmonhocs=Lopmonhoc::all();
+        $lopmonhocs=Lopmonhoc::orderBy('created_at','DESC')->get();
         return view('admin.lopmonhoc.list',compact('hockys','lopmonhocs'));
     }
     public function add(Request $request){

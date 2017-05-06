@@ -102,7 +102,7 @@
                                     <th>Mã lớp môn học</th>
                                     <th>Mã giảng viên</th>
                                     <th>Tên môn học</th>
-                                    <th>Xem danh sách--Sửa--Xoá<th/>
+                                    <th>Xem sinh viên--Sửa--Xoá<th/>
                                 </tr>
                             </thead>
                             <tbody>

@@ -65,13 +65,15 @@
         </div>
           @if(Auth::user()->role==1)
           <div class="clearfix"></div>
-          <div class="row">
+          <div class="x_content">
             <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="page-title">
               <div class="title_left">
                 <h4>Danh sách sinh viên chưa đánh giá<h4>
               </div>
             </div>
+            <div class="row">
+            <div class="col-sm-12">
           <div class="editable-responsive">
               <table class="table table-striped" id="danhsach_lop">
                   <thead>
@@ -96,6 +98,8 @@
           </div>
           </div>
           </div>
+        </div>
+      </div>
           @endif
           @endif
       </div>
